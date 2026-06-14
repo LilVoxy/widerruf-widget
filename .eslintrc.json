@@ -1,0 +1,7 @@
+{
+  "extends": "next/core-web-vitals",
+  "ignorePatterns": ["widget/dist/**", "public/widget.min.js"],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off"
+  }
+}

@@ -1,0 +1,174 @@
+openapi: 3.1.0
+info:
+  title: Widerrufsbutton DACH API
+  version: 1.0.0
+  description: >
+    Tamper-evident withdrawal intake API for § 356a BGB compliance.
+    Runs on Vercel Edge Functions (region fra1). All write paths use a
+    service-role connection to Supabase (eu-central-1) that bypasses RLS.
+  contact:
+    name: Widerrufsbutton DACH
+servers:
+  - url: https://app.widerrufsbutton.example
+    description: Production (Frankfurt edge)
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+      description: Per-organization API key (the widget reads it from data-api-key).
+    WebhookSignature:
+      type: apiKey
+      in: header
+      name: X-Signature
+      description: HMAC-SHA256 signature of the raw body, keyed by PAYMENTS_WEBHOOK_SECRET.
+  schemas:
+    WithdrawRequest:
+      type: object
+      additionalProperties: false
+      required: [name, order_id, email]
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 120
+          example: Erika Mustermann
+        order_id:
+          type: string
+          minLength: 1
+          maxLength: 64
+          example: DE-2026-00482
+        email:
+          type: string
+          format: email
+          maxLength: 254
+          example: erika@example.de
+      # NOTE: a "reason" / "grund" field is intentionally absent and rejected.
+    WithdrawSuccess:
+      type: object
+      required: [ok, received_at, hash, proof_url]
+      properties:
+        ok: { type: boolean, const: true }
+        received_at: { type: string, format: date-time, example: "2026-06-19T08:30:00.000Z" }
+        hash: { type: string, example: "f1c2a9..." }
+        proof_url: { type: string, format: uri }
+    Error:
+      type: object
+      required: [ok, error]
+      properties:
+        ok: { type: boolean, const: false }
+        error:
+          type: string
+          enum:
+            - invalid_payload
+            - invalid_api_key
+            - origin_not_allowed
+            - payment_required
+            - rate_limited
+            - email_unavailable
+            - internal_error
+        message: { type: string }
+
+paths:
+  /api/withdraw:
+    post:
+      summary: Submit a withdrawal declaration (UI step 3 → 4)
+      operationId: createWithdrawal
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - in: header
+          name: Origin
+          required: true
+          schema: { type: string }
+          description: Validated against the organization's domain_whitelist (CORS).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/WithdrawRequest" }
+      responses:
+        "200":
+          description: Stored + receipt dispatched.
+          headers:
+            Access-Control-Allow-Origin:
+              schema: { type: string }
+              description: Echoes the validated Origin.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/WithdrawSuccess" }
+        "400": { description: Validation failed,        content: { application/json: { schema: { $ref: "#/components/schemas/Error" } } } }
+        "401": { description: Missing/unknown API key,  content: { application/json: { schema: { $ref: "#/components/schemas/Error" } } } }
+        "402": { description: Subscription not active,  content: { application/json: { schema: { $ref: "#/components/schemas/Error" } } } }
+        "403": { description: Origin not whitelisted,   content: { application/json: { schema: { $ref: "#/components/schemas/Error" } } } }
+        "429":
+          description: Rate limit exceeded (max 5 / hour / IP).
+          headers:
+            Retry-After: { schema: { type: integer }, description: Seconds until reset. }
+          content: { application/json: { schema: { $ref: "#/components/schemas/Error" } } }
+        "503": { description: Stored, but receipt delivery failed, content: { application/json: { schema: { $ref: "#/components/schemas/Error" } } } }
+    options:
+      summary: CORS preflight
+      operationId: withdrawPreflight
+      parameters:
+        - in: header
+          name: Origin
+          required: true
+          schema: { type: string }
+      responses:
+        "204":
+          description: Preflight OK
+          headers:
+            Access-Control-Allow-Origin:  { schema: { type: string } }
+            Access-Control-Allow-Methods: { schema: { type: string } }
+            Access-Control-Allow-Headers: { schema: { type: string } }
+            Access-Control-Max-Age:       { schema: { type: integer } }
+
+  /verify/{hash}:
+    get:
+      summary: Public Proof-URL — verify a withdrawal fingerprint
+      operationId: verifyHash
+      parameters:
+        - in: path
+          name: hash
+          required: true
+          schema: { type: string }
+      responses:
+        "200": { description: Verification page (HTML) / JSON with notarization status. }
+        "404": { description: Hash not found. }
+
+  /api/webhooks/billing:
+    post:
+      summary: Merchant-of-Record billing webhook (subscription lifecycle)
+      operationId: billingWebhook
+      security:
+        - WebhookSignature: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum: [subscription.created, payment.success, subscription.expired, subscription.canceled]
+                data:
+                  type: object
+      responses:
+        "200": { description: Processed. }
+        "400": { description: Malformed payload. }
+        "401": { description: Invalid signature. }
+
+  /api/cron/merkle:
+    post:
+      summary: Daily Merkle-root build + RFC 3161 notarization (23:59 UTC)
+      operationId: cronMerkle
+      security:
+        - {}
+      description: Authenticated via the `Authorization: Bearer ${CRON_SECRET}` header set by Vercel Cron.
+      responses:
+        "200": { description: Roots built and notarized (or marked tsa_pending). }
+        "401": { description: Bad CRON secret. }

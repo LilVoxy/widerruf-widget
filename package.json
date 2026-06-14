@@ -1,0 +1,43 @@
+{
+  "name": "widerrufsbutton-dach",
+  "version": "1.0.0",
+  "private": true,
+  "description": "B2B Micro-SaaS Widerrufsbutton DACH — embeddable withdrawal widget + tamper-evident backend for §356a BGB compliance.",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "widget:build": "rollup -c widget/rollup.config.mjs",
+    "widget:size": "node widget/scripts/check-size.mjs"
+  },
+  "dependencies": {
+    "@openzeppelin/merkle-tree": "^1.0.7",
+    "@sentry/nextjs": "^8.42.0",
+    "@supabase/ssr": "^0.5.2",
+    "@supabase/supabase-js": "^2.46.1",
+    "@upstash/ratelimit": "^2.0.5",
+    "@upstash/redis": "^1.34.3",
+    "jszip": "^3.10.1",
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "resend": "^4.0.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
+    "@types/node": "^22.10.1",
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.1",
+    "eslint": "^9.16.0",
+    "eslint-config-next": "^15.1.0",
+    "rollup": "^4.28.1",
+    "typescript": "^5.7.2"
+  }
+}
