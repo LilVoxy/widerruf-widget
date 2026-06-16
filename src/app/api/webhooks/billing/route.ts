@@ -1,14 +1,14 @@
 /**
- * POST /api/webhooks/billing — Merchant-of-Record billing events.
+ * POST /api/webhooks/billing — LemonSqueezy billing events.
  *
  * SECURITY: the raw body is verified with HMAC-SHA256 against
  * PAYMENTS_WEBHOOK_SECRET (constant-time compare) before any state change, so
  * forged "activate my subscription" calls are rejected.
  *
- * Event mapping:
- *   subscription.created | payment.success   → subscription_status = 'active'
- *   subscription.expired                     → 'past_due'
- *   subscription.canceled                    → 'canceled'
+ * Event mapping (LemonSqueezy event_name → subscription_status):
+ *   subscription_created | subscription_payment_success | subscription_unpaused → 'active'
+ *   subscription_payment_failed                                                 → 'past_due'
+ *   subscription_expired | subscription_cancelled                              → 'canceled'
  */
 import crypto from "node:crypto";
 import { serviceClient } from "@/lib/supabase";
@@ -27,11 +27,13 @@ function verifySignature(rawBody: string, signature: string | null): boolean {
   return crypto.timingSafeEqual(a, b);
 }
 
-const STATUS_MAP: Record<string, "active" | "past_due" | "canceled"> = {
-  "subscription.created": "active",
-  "payment.success": "active",
-  "subscription.expired": "past_due",
-  "subscription.canceled": "canceled",
+const LS_MAP: Record<string, "active" | "past_due" | "canceled"> = {
+  subscription_created: "active",
+  subscription_payment_success: "active",
+  subscription_unpaused: "active",
+  subscription_payment_failed: "past_due",
+  subscription_expired: "canceled",
+  subscription_cancelled: "canceled",
 };
 
 export async function POST(req: Request): Promise<Response> {
@@ -45,21 +47,25 @@ export async function POST(req: Request): Promise<Response> {
     return json({ ok: false, error: "invalid_signature" }, 401);
   }
 
-  let event: { type?: string; data?: Record<string, unknown> };
+  let event: {
+    meta?: { event_name?: string; custom_data?: Record<string, unknown> };
+    data?: Record<string, unknown>;
+  };
   try {
     event = JSON.parse(raw);
   } catch {
     return json({ ok: false, error: "bad_json" }, 400);
   }
 
-  const type = event.type || "";
-  const newStatus = STATUS_MAP[type];
-  if (!newStatus) return json({ ok: true, ignored: type }, 200);
+  const eventName = event.meta?.event_name || "";
+  const newStatus = LS_MAP[eventName];
+  if (!newStatus) return json({ ok: true, ignored: eventName }, 200);
 
-  // The MoR payload must carry the org reference (custom data passed at checkout).
-  const data = event.data || {};
-  const orgId = (data.organization_id || data.org_id || (data.custom_data as any)?.org_id) as string | undefined;
-  const plan = (data.plan || data.subscription_plan) as string | undefined;
+  // LemonSqueezy carries the org reference in meta.custom_data (passed at checkout).
+  const customData = event.meta?.custom_data || {};
+  const orgId = customData.org_id as string | undefined;
+  const attributes = (event.data?.attributes as Record<string, unknown> | undefined) || {};
+  const plan = (attributes.product_name || attributes.variant_name) as string | undefined;
 
   if (!orgId) return json({ ok: false, error: "missing_org_reference" }, 400);
 

@@ -110,9 +110,21 @@ export default function Settings({ org, appUrl }: { org: OrgRow | null; appUrl: 
             </div>
           </>
         ) : (
-          <p style={{ color: "#d97706", fontSize: 14 }}>
-            Das Snippet wird angezeigt, sobald ein aktives Abonnement vorliegt (subscription_status = &apos;active&apos;).
-          </p>
+          <>
+            <p style={{ color: "#d97706", fontSize: 14 }}>
+              Das Snippet wird angezeigt, sobald ein aktives Abonnement vorliegt (subscription_status = &apos;active&apos;).
+            </p>
+            {current && (
+              <div style={{ marginTop: 12 }}>
+                <a
+                  style={{ ...btnS, display: "inline-block", textDecoration: "none" }}
+                  href={`https://widerruf-widget.lemonsqueezy.com/checkout/buy/2f827963-4be2-42ea-9f5b-cfad3b504958?checkout[custom][org_id]=${current.id}`}
+                >
+                  Subscribe — €9/month
+                </a>
+              </div>
+            )}
+          </>
         )}
       </section>
 
