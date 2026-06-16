@@ -13,7 +13,7 @@ export default function LoginPage() {
     const supabase = supabaseBrowser();
     const { error } = await supabase.auth.signInWithOtp({
       email,
-      options: { emailRedirectTo: `${window.location.origin}/dashboard` },
+      options: { emailRedirectTo: "https://www.widerruf-widget.de/dashboard" },
     });
     if (error) setErr(error.message);
     else setSent(true);
