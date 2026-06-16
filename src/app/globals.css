@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens for the dashboard + marketing site (app/ only).
+ * The embeddable widget lives in a closed Shadow DOM with `all:initial`,
+ * so none of these styles can leak into it.
+ */
+@theme {
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-500: #2563eb;
+  --color-brand-600: #1d4ed8;
+  --color-brand-700: #1e40af;
+
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: #f1f5f9;
+  color: #0f172a;
+}

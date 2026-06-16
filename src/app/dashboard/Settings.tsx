@@ -1,19 +1,19 @@
 "use client";
 import { useState } from "react";
-import type { OrgRow } from "./page";
+import { CheckCircle2, ExternalLink } from "lucide-react";
+import type { OrgRow } from "./types";
 
-const card: React.CSSProperties = {
-  background: "#fff",
-  borderRadius: 12,
-  padding: 24,
-  marginTop: 20,
-  boxShadow: "0 4px 16px rgba(0,0,0,.05)",
-};
-const labelS: React.CSSProperties = { display: "block", fontWeight: 600, fontSize: 14, margin: "14px 0 6px" };
-const inputS: React.CSSProperties = { width: "100%", padding: 10, borderRadius: 8, border: "1px solid #cbd5e1", fontSize: 14 };
-const btnS: React.CSSProperties = { padding: "10px 16px", borderRadius: 8, border: 0, background: "#1d4ed8", color: "#fff", fontWeight: 600, cursor: "pointer" };
+const CHECKOUT_BASE =
+  "https://widerruf-widget.lemonsqueezy.com/checkout/buy/2f827963-4be2-42ea-9f5b-cfad3b504958";
 
-export default function Settings({ org, appUrl }: { org: OrgRow | null; appUrl: string }) {
+const cardClass = "rounded-2xl border border-slate-200 bg-white p-6 shadow-sm";
+const labelClass = "mt-4 block text-sm font-medium text-slate-700";
+const inputClass =
+  "mt-1.5 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100";
+const primaryBtn =
+  "inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-700 disabled:opacity-60";
+
+export default function Settings({ org }: { org: OrgRow | null }) {
   const [name, setName] = useState(org?.name || "");
   const [impressum, setImpressum] = useState(org?.impressum_text || "");
   const [domains, setDomains] = useState((org?.domain_whitelist || []).join(", "));
@@ -56,79 +56,120 @@ export default function Settings({ org, appUrl }: { org: OrgRow | null; appUrl: 
   }
 
   const isActive = current?.subscription_status === "active";
-  const snippet = current
-    ? `<script src="${appUrl}/widget.min.js" data-api-key="${current.api_key}" defer></script>`
-    : "";
 
   return (
-    <>
-      <form style={card} onSubmit={save}>
-        <h2 style={{ marginTop: 0, fontSize: 18 }}>Stammdaten</h2>
-        <label style={labelS} htmlFor="nm">Shop-/Firmenname</label>
-        <input id="nm" style={inputS} value={name} onChange={(e) => setName(e.target.value)} required />
+    <div className="space-y-6">
+      <form className={cardClass} onSubmit={save}>
+        <h2 className="text-base font-semibold text-slate-900">Stammdaten</h2>
 
-        <label style={labelS} htmlFor="dm">Erlaubte Domains (CORS-Whitelist, kommagetrennt)</label>
-        <input id="dm" style={inputS} value={domains} onChange={(e) => setDomains(e.target.value)} placeholder="shop.de, www.shop.de" />
+        <label className={labelClass} htmlFor="nm">
+          Shop-/Firmenname
+        </label>
+        <input
+          id="nm"
+          className={inputClass}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
 
-        <label style={labelS} htmlFor="im">Impressum (erscheint im Quittungs-Footer) *</label>
-        <textarea id="im" style={{ ...inputS, minHeight: 120 }} value={impressum} onChange={(e) => setImpressum(e.target.value)} required />
+        <label className={labelClass} htmlFor="dm">
+          Erlaubte Domains (CORS-Whitelist, kommagetrennt)
+        </label>
+        <input
+          id="dm"
+          className={inputClass}
+          value={domains}
+          onChange={(e) => setDomains(e.target.value)}
+          placeholder="shop.de, www.shop.de"
+        />
 
-        <div style={{ marginTop: 18 }}>
-          <button style={btnS} disabled={busy} type="submit">{org ? "Speichern" : "Organisation anlegen"}</button>
+        <label className={labelClass} htmlFor="im">
+          Impressum (erscheint im Quittungs-Footer) *
+        </label>
+        <textarea
+          id="im"
+          className={`${inputClass} min-h-[120px]`}
+          value={impressum}
+          onChange={(e) => setImpressum(e.target.value)}
+          required
+        />
+
+        <div className="mt-5">
+          <button className={primaryBtn} disabled={busy} type="submit">
+            {org ? "Speichern" : "Organisation anlegen"}
+          </button>
         </div>
       </form>
 
-      <section style={card}>
-        <h2 style={{ marginTop: 0, fontSize: 18 }}>Auftragsverarbeitungsvertrag (AVV)</h2>
+      <section className={cardClass}>
+        <h2 className="text-base font-semibold text-slate-900">
+          Auftragsverarbeitungsvertrag (AVV)
+        </h2>
         {current?.avv_accepted_at ? (
-          <p style={{ color: "#16a34a" }}>Akzeptiert am {current.avv_accepted_at}</p>
+          <p className="mt-3 inline-flex items-center gap-2 text-sm text-emerald-700">
+            <CheckCircle2 className="h-4 w-4" />
+            Akzeptiert am {current.avv_accepted_at}
+          </p>
         ) : (
           <>
-            <label style={{ display: "flex", gap: 8, alignItems: "flex-start", fontSize: 14 }}>
-              <input type="checkbox" checked={avv} onChange={(e) => setAvv(e.target.checked)} />
-              <span>Ich akzeptiere den Auftragsverarbeitungsvertrag (Art. 28 DSGVO). Zeitpunkt und anonymisierte IP werden zu Auditzwecken gespeichert.</span>
+            <label className="mt-3 flex items-start gap-2 text-sm text-slate-700">
+              <input
+                type="checkbox"
+                className="mt-0.5"
+                checked={avv}
+                onChange={(e) => setAvv(e.target.checked)}
+              />
+              <span>
+                Ich akzeptiere den Auftragsverarbeitungsvertrag (Art. 28 DSGVO).
+                Zeitpunkt und anonymisierte IP werden zu Auditzwecken gespeichert.
+              </span>
             </label>
-            <div style={{ marginTop: 14 }}>
-              <button style={btnS} disabled={!avv || busy || !current} onClick={acceptAvv} type="button">AVV akzeptieren</button>
+            <div className="mt-4">
+              <button
+                className={primaryBtn}
+                disabled={!avv || busy || !current}
+                onClick={acceptAvv}
+                type="button"
+              >
+                AVV akzeptieren
+              </button>
             </div>
-            {!current && <p style={{ fontSize: 13, color: "#64748b" }}>Bitte zuerst die Organisation anlegen.</p>}
-          </>
-        )}
-      </section>
-
-      <section style={card}>
-        <h2 style={{ marginTop: 0, fontSize: 18 }}>Integrations-Snippet</h2>
-        <p style={{ fontSize: 14, color: "#475569" }}>
-          Abo-Status: <strong>{current?.subscription_status || "—"}</strong>
-        </p>
-        {isActive ? (
-          <>
-            <p style={{ fontSize: 14 }}>Fügen Sie diesen Tag vor <code>&lt;/body&gt;</code> ein:</p>
-            <textarea readOnly style={{ ...inputS, fontFamily: "monospace", minHeight: 70 }} value={snippet} />
-            <div style={{ marginTop: 12 }}>
-              <button style={btnS} type="button" onClick={() => navigator.clipboard.writeText(snippet)}>Kopieren</button>
-            </div>
-          </>
-        ) : (
-          <>
-            <p style={{ color: "#d97706", fontSize: 14 }}>
-              Das Snippet wird angezeigt, sobald ein aktives Abonnement vorliegt (subscription_status = &apos;active&apos;).
-            </p>
-            {current && (
-              <div style={{ marginTop: 12 }}>
-                <a
-                  style={{ ...btnS, display: "inline-block", textDecoration: "none" }}
-                  href={`https://widerruf-widget.lemonsqueezy.com/checkout/buy/2f827963-4be2-42ea-9f5b-cfad3b504958?checkout[custom][org_id]=${current.id}`}
-                >
-                  Subscribe — €9/month
-                </a>
-              </div>
+            {!current && (
+              <p className="mt-3 text-sm text-slate-500">
+                Bitte zuerst die Organisation anlegen.
+              </p>
             )}
           </>
         )}
       </section>
 
-      {msg && <p style={{ marginTop: 16, color: "#334155" }}>{msg}</p>}
-    </>
+      <section className={cardClass}>
+        <h2 className="text-base font-semibold text-slate-900">Abonnement</h2>
+        <p className="mt-2 text-sm text-slate-600">
+          Status:{" "}
+          <strong className={isActive ? "text-emerald-700" : "text-amber-700"}>
+            {current?.subscription_status || "—"}
+          </strong>
+          {current?.subscription_plan ? ` · ${current.subscription_plan}` : ""}
+        </p>
+        {!isActive && current && (
+          <a
+            href={`${CHECKOUT_BASE}?checkout[custom][org_id]=${current.id}`}
+            className={`${primaryBtn} mt-4`}
+          >
+            Subscribe — €9/Monat
+            <ExternalLink className="h-4 w-4" />
+          </a>
+        )}
+        {isActive && (
+          <p className="mt-2 text-sm text-slate-500">
+            Das Integrations-Snippet finden Sie unter „Übersicht“.
+          </p>
+        )}
+      </section>
+
+      {msg && <p className="text-sm text-slate-600">{msg}</p>}
+    </div>
   );
 }
