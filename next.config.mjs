@@ -19,6 +19,19 @@ const securityHeaders = [
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  // Canonicalize on www: the PKCE code-verifier cookie is written on the host
+  // that requested the magic-link, so the apex and www host must not diverge or
+  // the /auth/callback exchange fails. Force every apex hit onto www.
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "widerruf-widget.de" }],
+        destination: "https://www.widerruf-widget.de/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
