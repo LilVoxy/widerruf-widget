@@ -86,10 +86,10 @@ export default function Home() {
         {/* Subtle grid */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.4]"
+          className="pointer-events-none absolute inset-0 opacity-70"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)",
+              "linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px)",
             backgroundSize: "56px 56px",
             maskImage:
               "radial-gradient(70% 60% at 50% 0%, black 0%, transparent 75%)",
@@ -153,7 +153,7 @@ export default function Home() {
               return (
                 <div
                   key={item.title}
-                  className="group rounded-2xl bg-white p-6 shadow-[var(--shadow-card)] ring-1 ring-slate-200/70 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[var(--shadow-elevated)] hover:ring-slate-300/80 motion-reduce:transform-none motion-reduce:transition-none"
+                  className="group rounded-2xl bg-gradient-to-b from-white to-slate-50/70 p-6 shadow-[var(--shadow-card)] ring-1 ring-slate-200/80 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[var(--shadow-elevated)] hover:ring-slate-300 motion-reduce:transform-none motion-reduce:transition-none"
                 >
                   <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-600 ring-1 ring-inset ring-brand-100 transition-colors duration-200 group-hover:bg-brand-100 group-hover:text-brand-700">
                     <Icon className="h-5 w-5" />
@@ -180,7 +180,7 @@ export default function Home() {
               return (
                 <div
                   key={step.title}
-                  className="group relative rounded-2xl bg-white p-6 shadow-[var(--shadow-card)] ring-1 ring-slate-200/70 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[var(--shadow-elevated)] hover:ring-slate-300/80 motion-reduce:transform-none motion-reduce:transition-none"
+                  className="group relative rounded-2xl bg-gradient-to-b from-white to-slate-50/70 p-6 shadow-[var(--shadow-card)] ring-1 ring-slate-200/80 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[var(--shadow-elevated)] hover:ring-slate-300 motion-reduce:transform-none motion-reduce:transition-none"
                 >
                   <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 text-white shadow-[var(--shadow-brand)] ring-1 ring-inset ring-white/15">
                     <Icon className="h-5 w-5" />
@@ -313,7 +313,7 @@ export default function Home() {
             {t.landing.faq.items.map((item) => (
               <details
                 key={item.q}
-                className="group rounded-2xl bg-white p-5 shadow-[var(--shadow-card)] ring-1 ring-slate-200/70 transition-colors open:ring-slate-300/80"
+                className="group rounded-2xl bg-gradient-to-b from-white to-slate-50/70 p-5 shadow-[var(--shadow-card)] ring-1 ring-slate-200/80 transition-colors open:ring-slate-300"
               >
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-3 font-semibold text-slate-900">
                   <span className="flex items-center gap-3">
