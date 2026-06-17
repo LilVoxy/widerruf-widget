@@ -187,6 +187,7 @@ export const en = {
       tagline: "§ 356a BGB compliant · EU hosting (Frankfurt)",
       impressum: "Imprint",
       datenschutz: "Privacy",
+      kontakt: "Contact",
       hosting: "EU hosting · Frankfurt",
     },
   },
@@ -372,6 +373,84 @@ export const en = {
     error: "Error: ",
     unknown: "unknown",
     avvAcceptedAt: "AVV accepted on ",
+  },
+
+  contact: {
+    email: "vladresh09@gmail.com",
+  },
+
+  legal: {
+    backHome: "← Back to home",
+    contactCta: "Questions or suggestions?",
+    contactEmailLabel: "Write to us:",
+    placeholderNote:
+      "This is a template. Replace the fields in brackets [ ] with your real company details before going live — these pages are legally required in the DACH region.",
+    impressum: {
+      title: "Imprint",
+      sections: [
+        {
+          heading: "Information pursuant to § 5 DDG",
+          body: "[Company name / First and last name]\n[Street and house number]\n[Postal code, City]\n[Country]",
+        },
+        {
+          heading: "Contact",
+          body: "Email: vladresh09@gmail.com",
+        },
+        {
+          heading: "Responsible for content pursuant to § 18 (2) MStV",
+          body: "[First and last name]\n[Address as above]",
+        },
+        {
+          heading: "VAT identification number",
+          body: "VAT ID pursuant to § 27a UStG:\n[VAT ID — if applicable]",
+        },
+        {
+          heading: "Liability for content",
+          body: "As a service provider we are responsible for our own content on these pages in accordance with general law. We are not obligated to monitor transmitted or stored third-party information.",
+        },
+        {
+          heading: "Liability for links",
+          body: "Our offer contains links to external websites of third parties, over whose content we have no influence. The respective provider is always responsible for the content of the linked pages.",
+        },
+        {
+          heading: "Copyright",
+          body: "The content and works created on these pages are subject to copyright. Contributions by third parties are marked as such.",
+        },
+      ],
+    },
+    datenschutz: {
+      title: "Privacy Policy",
+      sections: [
+        {
+          heading: "1. Controller",
+          body: "The controller responsible for data processing on this website is:\n[Company name / First and last name]\n[Address]\nEmail: vladresh09@gmail.com",
+        },
+        {
+          heading: "2. General information",
+          body: "We process personal data only to the extent necessary to provide a functional website and our services, and in accordance with the GDPR.",
+        },
+        {
+          heading: "3. Hosting",
+          body: "This website and the service API are hosted in the EU (Frankfurt). Server log files (IP address, time, requested resource) may be processed by our hosting providers on the basis of our legitimate interest (Art. 6 (1)(f) GDPR).",
+        },
+        {
+          heading: "4. Withdrawal widget data",
+          body: "When an end customer submits a withdrawal via the widget, name, email and order number are processed to create the legally required confirmation. Personal data is encrypted at rest and only the order number is stored in plain text. See our Data Processing Agreement (AVV) for details.",
+        },
+        {
+          heading: "5. Email delivery",
+          body: "Confirmation emails are sent via our email provider as a durable medium pursuant to § 126b BGB. Email content is processed solely to deliver the confirmation.",
+        },
+        {
+          heading: "6. Your rights",
+          body: "You have the right to access, rectification, erasure, restriction of processing, data portability and to object. You also have the right to lodge a complaint with a supervisory authority. To exercise your rights, contact: vladresh09@gmail.com",
+        },
+        {
+          heading: "7. Contact",
+          body: "If you contact us by email, your details will be processed to handle your request and any follow-up questions (Art. 6 (1)(b) and (f) GDPR).",
+        },
+      ],
+    },
   },
 };
 

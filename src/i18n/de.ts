@@ -189,6 +189,7 @@ export const de: Dict = {
       tagline: "§ 356a BGB-konform · EU-Hosting (Frankfurt)",
       impressum: "Impressum",
       datenschutz: "Datenschutz",
+      kontakt: "Kontakt",
       hosting: "EU-Hosting · Frankfurt",
     },
   },
@@ -374,5 +375,83 @@ export const de: Dict = {
     error: "Fehler: ",
     unknown: "unbekannt",
     avvAcceptedAt: "AVV akzeptiert am ",
+  },
+
+  contact: {
+    email: "vladresh09@gmail.com",
+  },
+
+  legal: {
+    backHome: "← Zurück zur Startseite",
+    contactCta: "Fragen oder Vorschläge?",
+    contactEmailLabel: "Schreiben Sie uns:",
+    placeholderNote:
+      "Dies ist eine Vorlage. Ersetzen Sie die Felder in eckigen Klammern [ ] vor dem Livegang durch Ihre echten Unternehmensdaten — diese Seiten sind im DACH-Raum gesetzlich vorgeschrieben.",
+    impressum: {
+      title: "Impressum",
+      sections: [
+        {
+          heading: "Angaben gemäß § 5 DDG",
+          body: "[Firmenname / Vor- und Nachname]\n[Straße und Hausnummer]\n[PLZ Ort]\n[Land]",
+        },
+        {
+          heading: "Kontakt",
+          body: "E-Mail: vladresh09@gmail.com",
+        },
+        {
+          heading: "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV",
+          body: "[Vor- und Nachname]\n[Anschrift wie oben]",
+        },
+        {
+          heading: "Umsatzsteuer-Identifikationsnummer",
+          body: "Umsatzsteuer-ID gemäß § 27a UStG:\n[USt-IdNr. — falls vorhanden]",
+        },
+        {
+          heading: "Haftung für Inhalte",
+          body: "Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Wir sind nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen.",
+        },
+        {
+          heading: "Haftung für Links",
+          body: "Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter verantwortlich.",
+        },
+        {
+          heading: "Urheberrecht",
+          body: "Die durch uns erstellten Inhalte und Werke auf diesen Seiten unterliegen dem Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet.",
+        },
+      ],
+    },
+    datenschutz: {
+      title: "Datenschutzerklärung",
+      sections: [
+        {
+          heading: "1. Verantwortlicher",
+          body: "Verantwortlich für die Datenverarbeitung auf dieser Website ist:\n[Firmenname / Vor- und Nachname]\n[Anschrift]\nE-Mail: vladresh09@gmail.com",
+        },
+        {
+          heading: "2. Allgemeine Hinweise",
+          body: "Wir verarbeiten personenbezogene Daten nur, soweit dies zur Bereitstellung einer funktionsfähigen Website und unserer Leistungen erforderlich ist, und im Einklang mit der DSGVO.",
+        },
+        {
+          heading: "3. Hosting",
+          body: "Diese Website und die Service-API werden in der EU (Frankfurt) gehostet. Server-Logfiles (IP-Adresse, Zeitpunkt, abgerufene Ressource) können von unseren Hosting-Anbietern auf Grundlage unseres berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO) verarbeitet werden.",
+        },
+        {
+          heading: "4. Daten des Widerrufs-Widgets",
+          body: "Wenn ein Endkunde über das Widget einen Widerruf einreicht, werden Name, E-Mail und Bestellnummer zur Erstellung der gesetzlich vorgeschriebenen Bestätigung verarbeitet. Personenbezogene Daten werden verschlüsselt gespeichert; nur die Bestellnummer wird im Klartext gespeichert. Details siehe Auftragsverarbeitungsvertrag (AVV).",
+        },
+        {
+          heading: "5. E-Mail-Versand",
+          body: "Bestätigungs-E-Mails werden über unseren E-Mail-Anbieter als dauerhafter Datenträger gemäß § 126b BGB versendet. Der E-Mail-Inhalt wird ausschließlich zur Zustellung der Bestätigung verarbeitet.",
+        },
+        {
+          heading: "6. Ihre Rechte",
+          body: "Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Außerdem haben Sie das Recht, sich bei einer Aufsichtsbehörde zu beschweren. Zur Ausübung Ihrer Rechte wenden Sie sich an: vladresh09@gmail.com",
+        },
+        {
+          heading: "7. Kontakt",
+          body: "Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben zur Bearbeitung Ihrer Anfrage und etwaiger Anschlussfragen verarbeitet (Art. 6 Abs. 1 lit. b und f DSGVO).",
+        },
+      ],
+    },
   },
 };

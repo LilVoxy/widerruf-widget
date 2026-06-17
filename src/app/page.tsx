@@ -305,9 +305,12 @@ export default function Home() {
             </span>
             <span>{t.common.appName} · {t.landing.footer.tagline}</span>
           </div>
-          <div className="flex items-center gap-5">
-            <a href="#" className="hover:text-slate-900">{t.landing.footer.impressum}</a>
-            <a href="#" className="hover:text-slate-900">{t.landing.footer.datenschutz}</a>
+          <div className="flex flex-wrap items-center justify-center gap-5">
+            <Link href="/impressum" className="hover:text-slate-900">{t.landing.footer.impressum}</Link>
+            <Link href="/datenschutz" className="hover:text-slate-900">{t.landing.footer.datenschutz}</Link>
+            <a href={`mailto:${t.contact.email}`} className="hover:text-slate-900">
+              {t.landing.footer.kontakt}
+            </a>
             <span>{t.landing.footer.hosting}</span>
           </div>
         </div>
