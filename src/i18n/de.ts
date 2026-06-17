@@ -386,37 +386,41 @@ export const de: Dict = {
     contactCta: "Fragen oder Vorschläge?",
     contactEmailLabel: "Schreiben Sie uns:",
     placeholderNote:
-      "Dies ist eine Vorlage. Ersetzen Sie die Felder in eckigen Klammern [ ] vor dem Livegang durch Ihre echten Unternehmensdaten — diese Seiten sind im DACH-Raum gesetzlich vorgeschrieben.",
+      "Felder in eckigen Klammern [ ] sind Platzhalter — ersetzen Sie sie vor dem Livegang durch Ihre echten Angaben (Anbieter, Anschrift, USt-IdNr. usw.). Dieser Text dient der Vereinfachung und stellt keine Rechtsberatung dar; bitte lassen Sie ihn anwaltlich prüfen, insbesondere die Auftragsverarbeitungsverträge (AVV) und die EU-Standardvertragsklauseln (SCC).",
     impressum: {
       title: "Impressum",
       sections: [
         {
           heading: "Angaben gemäß § 5 DDG",
-          body: "[Firmenname / Vor- und Nachname]\n[Straße und Hausnummer]\n[PLZ Ort]\n[Land]",
+          body: "[Rechtsform und Firmenname, z. B. Max Mustermann e.K. / Muster GmbH]\n[Straße und Hausnummer]\n[PLZ und Ort]\n[Land]\n\nVertreten durch: [Name des/der Vertretungsberechtigten / Geschäftsführers]",
         },
         {
           heading: "Kontakt",
-          body: "E-Mail: vladresh09@gmail.com",
+          body: "E-Mail: {email}\nTelefon: [optional — Ihre Telefonnummer]\n\nSchriftliche Anfragen beantworten wir in der Regel innerhalb weniger Werktage.",
         },
         {
           heading: "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV",
           body: "[Vor- und Nachname]\n[Anschrift wie oben]",
         },
         {
-          heading: "Umsatzsteuer-Identifikationsnummer",
-          body: "Umsatzsteuer-ID gemäß § 27a UStG:\n[USt-IdNr. — falls vorhanden]",
+          heading: "Register & Umsatzsteuer",
+          body: "Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:\n[USt-IdNr. — falls vorhanden]\n\n[Falls Sie in einem Register eingetragen sind, geben Sie hier zusätzlich Registergericht und -nummer an, z. B. Amtsgericht Musterstadt, HRB 12345.]",
+        },
+        {
+          heading: "Verbraucherstreitbeilegung",
+          body: "Wir sind weder verpflichtet noch bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen (§ 36 VSBG).\n\nHinweis: Die Plattform der Europäischen Kommission zur Online-Streitbeilegung (OS) wurde 2025 eingestellt; ein Link darauf entfällt daher. Sie erreichen uns direkt unter der oben genannten E-Mail-Adresse.",
         },
         {
           heading: "Haftung für Inhalte",
-          body: "Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Wir sind nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen.",
+          body: "Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich (§ 7 Abs. 1 DDG). Nach §§ 8 bis 10 DDG sind wir jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt.",
         },
         {
           heading: "Haftung für Links",
-          body: "Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter verantwortlich.",
+          body: "Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich. Bei Bekanntwerden von Rechtsverletzungen entfernen wir derartige Links umgehend.",
         },
         {
           heading: "Urheberrecht",
-          body: "Die durch uns erstellten Inhalte und Werke auf diesen Seiten unterliegen dem Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet.",
+          body: "Die durch uns erstellten Inhalte und Werke auf diesen Seiten unterliegen dem Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet. Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen unserer schriftlichen Zustimmung.",
         },
       ],
     },
@@ -424,32 +428,60 @@ export const de: Dict = {
       title: "Datenschutzerklärung",
       sections: [
         {
-          heading: "1. Verantwortlicher",
-          body: "Verantwortlich für die Datenverarbeitung auf dieser Website ist:\n[Firmenname / Vor- und Nachname]\n[Anschrift]\nE-Mail: vladresh09@gmail.com",
+          heading: "1. Verantwortlicher und Rollen",
+          body: "Verantwortlicher im Sinne des Art. 4 Nr. 7 DSGVO für diese Website, das Dashboard und die Abrechnung ist:\n[Anbieter / Firmenname]\n[Anschrift]\nE-Mail: {email}\n\nWichtige Abgrenzung: Für die Widerrufsdaten Ihrer Endkunden sind Sie — der Shop-Betreiber — der Verantwortliche, und wir handeln ausschließlich als Ihr Auftragsverarbeiter auf Grundlage eines Auftragsverarbeitungsvertrags (AVV, Art. 28 DSGVO). Für Ihre eigenen Konto- und Abrechnungsdaten sind wir der Verantwortliche.",
         },
         {
-          heading: "2. Allgemeine Hinweise",
-          body: "Wir verarbeiten personenbezogene Daten nur, soweit dies zur Bereitstellung einer funktionsfähigen Website und unserer Leistungen erforderlich ist, und im Einklang mit der DSGVO.",
+          heading: "2. Was diese Erklärung abdeckt",
+          body: "Wir verarbeiten personenbezogene Daten nur, soweit dies zur Bereitstellung einer funktionsfähigen Website und unseres Dienstes erforderlich ist, stets im Einklang mit der DSGVO. Diese Erklärung beschreibt, was wir beim Besuch der Website, beim Betrieb des Dashboards und beim Abschluss eines Abonnements verarbeiten — und wie wir mit den Widerrufsdaten umgehen, die Ihre Kunden über das Widget einreichen.",
         },
         {
-          heading: "3. Hosting",
-          body: "Diese Website und die Service-API werden in der EU (Frankfurt) gehostet. Server-Logfiles (IP-Adresse, Zeitpunkt, abgerufene Ressource) können von unseren Hosting-Anbietern auf Grundlage unseres berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO) verarbeitet werden.",
+          heading: "3. Rechtsgrundlagen (Art. 6 DSGVO)",
+          body: "Wir stützen uns auf folgende Rechtsgrundlagen:\n• Vertragserfüllung / vorvertragliche Maßnahmen — Art. 6 Abs. 1 lit. b: Betrieb Ihres Kontos und des Dienstes.\n• Berechtigte Interessen — Art. 6 Abs. 1 lit. f: sicherer Betrieb, Hosting, Missbrauchsabwehr und Fehlerüberwachung.\n• Rechtliche Verpflichtung — Art. 6 Abs. 1 lit. c: gesetzliche Aufbewahrungspflichten (z. B. Steuerrecht).\n• Einwilligung — Art. 6 Abs. 1 lit. a: nur, wo wir ausdrücklich darum bitten (jederzeit widerrufbar).",
         },
         {
-          heading: "4. Daten des Widerrufs-Widgets",
-          body: "Wenn ein Endkunde über das Widget einen Widerruf einreicht, werden Name, E-Mail und Bestellnummer zur Erstellung der gesetzlich vorgeschriebenen Bestätigung verarbeitet. Personenbezogene Daten werden verschlüsselt gespeichert; nur die Bestellnummer wird im Klartext gespeichert. Details siehe Auftragsverarbeitungsvertrag (AVV).",
+          heading: "4. Hosting und Server-Logfiles",
+          body: "Die Website und die Service-API werden bei Vercel gehostet; die Anwendung läuft in der EU-Region fra1 (Frankfurt). Bei jedem Aufruf verarbeitet die Infrastruktur Server-Logdaten wie IP-Adresse, Datum und Uhrzeit, die abgerufene Ressource und den User-Agent — zum Zweck des sicheren und stabilen Betriebs (Art. 6 Abs. 1 lit. f DSGVO).",
         },
         {
-          heading: "5. E-Mail-Versand",
-          body: "Bestätigungs-E-Mails werden über unseren E-Mail-Anbieter als dauerhafter Datenträger gemäß § 126b BGB versendet. Der E-Mail-Inhalt wird ausschließlich zur Zustellung der Bestätigung verarbeitet.",
+          heading: "5. Konto und Anmeldung (Dashboard)",
+          body: "Zur Nutzung des Dashboards melden Sie sich mit Ihrer E-Mail-Adresse über einen Einmalcode / Magic-Link an (passwortlos). Die Authentifizierung übernimmt Supabase. Wir verarbeiten Ihre E-Mail-Adresse und Authentifizierungs-Metadaten zum Betrieb Ihres Kontos (Art. 6 Abs. 1 lit. b DSGVO).",
         },
         {
-          heading: "6. Ihre Rechte",
-          body: "Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Außerdem haben Sie das Recht, sich bei einer Aufsichtsbehörde zu beschweren. Zur Ausübung Ihrer Rechte wenden Sie sich an: vladresh09@gmail.com",
+          heading: "6. Daten des Widerrufs-Widgets (Verarbeitung im Auftrag des Shops)",
+          body: "Wenn ein Endkunde über das Widget einen Widerruf einreicht, verarbeiten wir dessen Namen, E-Mail-Adresse und Bestellnummer, um die gesetzlich vorgeschriebene Bestätigung (§ 356a BGB) auf einem dauerhaften Datenträger (§ 126b BGB) zu erstellen. Name und E-Mail werden mit AES-256-GCM verschlüsselt gespeichert; nur die Bestellnummer wird im Klartext gespeichert. Die IP-Adresse des Besuchers wird transient zur Ratenbegrenzung genutzt und nicht in identifizierbarer Form gespeichert; wird eine IP zu Auditzwecken erfasst, geschieht dies anonymisiert. Wir verarbeiten diese Daten ausschließlich als Ihr Auftragsverarbeiter auf Grundlage des AVV, den Sie im Dashboard einsehen und akzeptieren können.",
         },
         {
-          heading: "7. Kontakt",
-          body: "Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben zur Bearbeitung Ihrer Anfrage und etwaiger Anschlussfragen verarbeitet (Art. 6 Abs. 1 lit. b und f DSGVO).",
+          heading: "7. E-Mail-Versand (dauerhafter Datenträger)",
+          body: "Bestätigungs-E-Mails werden über Resend als dauerhafter Datenträger gemäß § 126b BGB versendet. Die E-Mail-Adresse des Empfängers und der Nachrichteninhalt werden ausschließlich zur Zustellung der Bestätigung verarbeitet; der EU-Versand ist in der Provider-Konfiguration festgelegt.",
+        },
+        {
+          heading: "8. Zahlungsabwicklung (LemonSqueezy als Merchant of Record)",
+          body: "Zahlungen werden über LemonSqueezy abgewickelt, das als Merchant of Record auftritt. Das bedeutet: LemonSqueezy ist der Verkäufer im Rechtssinne — es zieht die Zahlung ein, stellt die Rechnung aus und führt USt./Steuern in eigener Verantwortung ab. Beim Checkout übergeben wir lediglich eine interne Organisations-Kennung (org_id). Zurück erhalten wir den Abo-Status, den Tarif, die Abrechnungs-E-Mail-Adresse sowie eine Kunden-/Abonnement-ID — gerade so viel, wie nötig ist, um Ihr Widget zu aktivieren oder zu deaktivieren. Vollständige Kartendaten erhalten oder speichern wir nicht. Die von Ihnen eingegebenen Zahlungs- und Abrechnungsdaten verarbeitet LemonSqueezy nach seiner eigenen Datenschutzerklärung: https://www.lemonsqueezy.com/privacy. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.",
+        },
+        {
+          heading: "9. Auftragsverarbeiter und Subprozessoren",
+          body: "Wir setzen folgende Dienstleister ein. Mit jedem schließen wir einen Auftragsverarbeitungsvertrag (AVV/DPA); soweit ein Anbieter Daten außerhalb der EU/des EWR verarbeiten kann, werden Übermittlungen durch die EU-Standardvertragsklauseln (SCC) abgesichert.\n\n• Vercel — Hosting & Auslieferung der App/API (Ausführungsregion fra1, Frankfurt, EU; Unternehmen mit Sitz in den USA) → AVV + SCC.\n• Supabase — Datenbank & Authentifizierung, inkl. verschlüsselter PII und Kontodaten (EU-Region; Unternehmen mit Sitz in den USA) → AVV + SCC.\n• Resend — Versand transaktionaler E-Mails (EU-Versand konfiguriert; Anbieter mit Sitz in den USA) → AVV + SCC.\n• Upstash — Ratenbegrenzung (Redis); IP wird transient verarbeitet und nicht gespeichert (EU-Region) → AVV, SCC sofern einschlägig.\n• Sentry — Fehler- und Performance-Überwachung (USA) → AVV + SCC.\n• LemonSqueezy — Zahlungsabwicklung / Merchant of Record (USA); eigener Verantwortlicher für Zahlungsdaten → siehe Abschnitt 8, SCC bei Übermittlung.\n• DigiCert (Zeitstempeldienst, RFC 3161) — qualifizierter Zeitstempel ausschließlich des täglichen Merkle-Roots; es werden keine personenbezogenen Daten übermittelt, nur ein kryptografischer Hash (USA).",
+        },
+        {
+          heading: "10. Cookies und lokale Speicherung",
+          body: "Wir verwenden keine Werbe- oder Tracking-Cookies und erstellen keine Profile. Wir nutzen lediglich:\n• ein Sprach-Cookie („lang“, Gültigkeit ca. 1 Jahr), das Ihre DE/EN-Auswahl merkt und im localStorage Ihres Browsers gespiegelt wird;\n• technisch notwendige Authentifizierungs-Cookies, die Supabase bei der Anmeldung am Dashboard setzt, einschließlich eines temporären PKCE-Login-Cookies.\nDiese sind technisch erforderlich bzw. vertragsbezogen (Art. 6 Abs. 1 lit. f und b DSGVO), sodass hierfür kein Einwilligungsbanner notwendig ist.",
+        },
+        {
+          heading: "11. Speicherdauer und Löschung",
+          body: "Konto- und Abrechnungsdaten werden für die Dauer des Abonnements und so lange aufbewahrt, wie gesetzliche Aufbewahrungsfristen es erfordern (z. B. Steuerrecht). Widerrufsdatensätze werden nach der konfigurierten Aufbewahrungsfrist (standardmäßig 180 Tage) automatisch anonymisiert; der kryptografische Hash bleibt erhalten, sodass der Nachweis ohne personenbezogene Daten nachprüfbar bleibt.",
+        },
+        {
+          heading: "12. Ihre Rechte",
+          body: "Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch sowie das Recht, eine erteilte Einwilligung mit Wirkung für die Zukunft zu widerrufen. Außerdem haben Sie das Recht, sich bei einer Aufsichtsbehörde zu beschweren. Zur Ausübung Ihrer Rechte wenden Sie sich an: {email}.\n\nFür Endkunden-Widerrufsdaten wenden Sie sich bitte an den Shop, bei dem Sie bestellt haben — dieser Shop ist der Verantwortliche, und wir unterstützen ihn als sein Auftragsverarbeiter.",
+        },
+        {
+          heading: "13. Datensicherheit",
+          body: "Alle Verbindungen sind per TLS verschlüsselt. Personenbezogene Daten im Widerrufs-Log werden zusätzlich auf Feldebene mit AES-256-GCM verschlüsselt, Daten werden in der EU gehostet, und der Zugriff ist auf das technisch Notwendige beschränkt.",
+        },
+        {
+          heading: "14. Kontakt zum Datenschutz",
+          body: "Bei Fragen zum Datenschutz oder zur Ausübung Ihrer Rechte erreichen Sie uns unter: {email}.\n[Falls Sie einen Datenschutzbeauftragten benannt haben, geben Sie hier dessen Namen und Kontaktdaten an.]",
         },
       ],
     },

@@ -14,6 +14,10 @@ export default function LegalDoc({ doc }: { doc: "impressum" | "datenschutz" }) 
   const t = useT();
   const page = t.legal[doc];
 
+  // Keep the contact email a single source of truth: bodies use the {email}
+  // token instead of hardcoding the address, so it can never drift.
+  const render = (text: string) => text.replace(/\{email\}/g, t.contact.email);
+
   return (
     <div className="min-h-screen bg-white">
       <header className="sticky top-0 z-30 border-b border-white/10 bg-slate-950/90 backdrop-blur">
@@ -47,7 +51,7 @@ export default function LegalDoc({ doc }: { doc: "impressum" | "datenschutz" }) 
             <section key={s.heading}>
               <h2 className="text-lg font-semibold text-slate-900">{s.heading}</h2>
               <p className="mt-2 whitespace-pre-line text-sm leading-relaxed text-slate-600">
-                {s.body}
+                {render(s.body)}
               </p>
             </section>
           ))}

@@ -384,37 +384,41 @@ export const en = {
     contactCta: "Questions or suggestions?",
     contactEmailLabel: "Write to us:",
     placeholderNote:
-      "This is a template. Replace the fields in brackets [ ] with your real company details before going live — these pages are legally required in the DACH region.",
+      "Fields in square brackets [ ] are placeholders — replace them with your real details (legal provider, address, VAT ID, etc.) before going live. This text is provided for convenience and is not legal advice; please have it reviewed by a lawyer, especially the data processing agreements (AVV) and the EU standard contractual clauses (SCC).",
     impressum: {
       title: "Imprint",
       sections: [
         {
           heading: "Information pursuant to § 5 DDG",
-          body: "[Company name / First and last name]\n[Street and house number]\n[Postal code, City]\n[Country]",
+          body: "[Legal form and company name, e.g. Max Mustermann e.K. / Muster GmbH]\n[Street and house number]\n[Postal code and city]\n[Country]\n\nRepresented by: [Name of the authorised representative / managing director]",
         },
         {
           heading: "Contact",
-          body: "Email: vladresh09@gmail.com",
+          body: "Email: {email}\nPhone: [optional — your phone number]\n\nWritten enquiries are usually answered within a few business days.",
         },
         {
           heading: "Responsible for content pursuant to § 18 (2) MStV",
-          body: "[First and last name]\n[Address as above]",
+          body: "[First and last name]\n[Address as stated above]",
         },
         {
-          heading: "VAT identification number",
-          body: "VAT ID pursuant to § 27a UStG:\n[VAT ID — if applicable]",
+          heading: "Register & VAT",
+          body: "VAT identification number pursuant to § 27a UStG:\n[VAT ID — if you have one]\n\n[If you are entered in a register, also state the register court and number here, e.g. Amtsgericht Musterstadt, HRB 12345.]",
+        },
+        {
+          heading: "Consumer dispute resolution",
+          body: "We are neither obligated nor willing to participate in dispute resolution proceedings before a consumer arbitration board (Verbraucherschlichtungsstelle, § 36 VSBG).\n\nNote: the European Commission's online dispute resolution (ODR) platform was discontinued in 2025, so no link to it is provided. You can reach us directly at the email address above.",
         },
         {
           heading: "Liability for content",
-          body: "As a service provider we are responsible for our own content on these pages in accordance with general law. We are not obligated to monitor transmitted or stored third-party information.",
+          body: "As a service provider we are responsible for our own content on these pages in accordance with general law (§ 7 (1) DDG). Pursuant to §§ 8 to 10 DDG, however, we are not obligated to monitor transmitted or stored third-party information or to investigate circumstances that indicate unlawful activity. Obligations to remove or block the use of information under general law remain unaffected.",
         },
         {
           heading: "Liability for links",
-          body: "Our offer contains links to external websites of third parties, over whose content we have no influence. The respective provider is always responsible for the content of the linked pages.",
+          body: "Our offer contains links to external websites of third parties over whose content we have no influence. The respective provider or operator is always responsible for the content of the linked pages. Should we become aware of any legal infringements, we will remove such links immediately.",
         },
         {
           heading: "Copyright",
-          body: "The content and works created on these pages are subject to copyright. Contributions by third parties are marked as such.",
+          body: "The content and works created by us on these pages are subject to copyright. Contributions by third parties are marked as such. Reproduction, processing, distribution or any kind of use beyond the limits of copyright require our written consent.",
         },
       ],
     },
@@ -422,32 +426,60 @@ export const en = {
       title: "Privacy Policy",
       sections: [
         {
-          heading: "1. Controller",
-          body: "The controller responsible for data processing on this website is:\n[Company name / First and last name]\n[Address]\nEmail: vladresh09@gmail.com",
+          heading: "1. Controller and roles",
+          body: "Controller within the meaning of Art. 4 (7) GDPR for this website, the dashboard and billing is:\n[Legal provider / company name]\n[Address]\nEmail: {email}\n\nImportant distinction: for the withdrawal data of your end customers, you — the shop operator — are the controller, and we act solely as your processor (Auftragsverarbeiter) under a data processing agreement (AVV, Art. 28 GDPR). For your own account and billing data, we are the controller.",
         },
         {
-          heading: "2. General information",
-          body: "We process personal data only to the extent necessary to provide a functional website and our services, and in accordance with the GDPR.",
+          heading: "2. What this policy covers",
+          body: "We process personal data only to the extent necessary to provide a functional website and our service, and always in accordance with the GDPR. This policy explains what we process when you visit the site, run the dashboard or subscribe — and how we handle the withdrawal data your customers submit through the widget.",
         },
         {
-          heading: "3. Hosting",
-          body: "This website and the service API are hosted in the EU (Frankfurt). Server log files (IP address, time, requested resource) may be processed by our hosting providers on the basis of our legitimate interest (Art. 6 (1)(f) GDPR).",
+          heading: "3. Legal bases (Art. 6 GDPR)",
+          body: "We rely on the following legal bases:\n• Performance of a contract / pre-contractual steps — Art. 6 (1)(b): operating your account and the service.\n• Legitimate interests — Art. 6 (1)(f): secure operation, hosting, abuse prevention and error monitoring.\n• Legal obligation — Art. 6 (1)(c): statutory retention duties (e.g. tax).\n• Consent — Art. 6 (1)(a): only where we explicitly ask for it (you can withdraw it at any time).",
         },
         {
-          heading: "4. Withdrawal widget data",
-          body: "When an end customer submits a withdrawal via the widget, name, email and order number are processed to create the legally required confirmation. Personal data is encrypted at rest and only the order number is stored in plain text. See our Data Processing Agreement (AVV) for details.",
+          heading: "4. Hosting and server log files",
+          body: "The website and the service API are hosted on Vercel, with the application running in the EU region fra1 (Frankfurt). With every request the infrastructure processes server log data such as IP address, date and time, the requested resource and the user agent, for the purpose of secure and stable operation (Art. 6 (1)(f) GDPR).",
         },
         {
-          heading: "5. Email delivery",
-          body: "Confirmation emails are sent via our email provider as a durable medium pursuant to § 126b BGB. Email content is processed solely to deliver the confirmation.",
+          heading: "5. Account and login (dashboard)",
+          body: "To use the dashboard you log in with your email address via a one-time code / magic link (passwordless). Authentication is handled by Supabase. We process your email address and authentication metadata to operate your account (Art. 6 (1)(b) GDPR).",
         },
         {
-          heading: "6. Your rights",
-          body: "You have the right to access, rectification, erasure, restriction of processing, data portability and to object. You also have the right to lodge a complaint with a supervisory authority. To exercise your rights, contact: vladresh09@gmail.com",
+          heading: "6. Withdrawal widget data (processing on behalf of the shop)",
+          body: "When an end customer submits a withdrawal through the widget, we process their name, email address and order number in order to create the legally required confirmation (§ 356a BGB) on a durable medium (§ 126b BGB). Name and email are encrypted at rest with AES-256-GCM; only the order number is stored in plain text. The visitor's IP address is used transiently for rate limiting and is not stored in identifiable form; where an IP is recorded for audit purposes it is anonymised first. We process this data exclusively as your processor under the AVV, which you can review and accept in the dashboard.",
         },
         {
-          heading: "7. Contact",
-          body: "If you contact us by email, your details will be processed to handle your request and any follow-up questions (Art. 6 (1)(b) and (f) GDPR).",
+          heading: "7. Email delivery (durable medium)",
+          body: "Confirmation emails are sent via Resend as a durable medium pursuant to § 126b BGB. The recipient's email address and the message content are processed solely to deliver the confirmation; EU sending is enforced in the provider configuration.",
+        },
+        {
+          heading: "8. Payment processing (LemonSqueezy as Merchant of Record)",
+          body: "Payments are handled by LemonSqueezy, which acts as the Merchant of Record. This means LemonSqueezy is the seller of record: it collects the payment, issues the invoice and handles VAT/taxes on its own responsibility. At checkout we pass only an internal organisation identifier (org_id). In return we receive the subscription status, the plan, the billing email address and a customer/subscription id — just enough to activate or deactivate your widget. We never receive or store full card data. The payment and billing data you enter is processed by LemonSqueezy under its own privacy policy: https://www.lemonsqueezy.com/privacy. Legal basis: Art. 6 (1)(b) GDPR.",
+        },
+        {
+          heading: "9. Processors and subprocessors",
+          body: "We use the following service providers. We conclude a data processing agreement (AVV/DPA) with each of them; where a provider may process data outside the EU/EEA, transfers are safeguarded by the EU standard contractual clauses (SCC).\n\n• Vercel — hosting & delivery of the app/API (execution region fra1, Frankfurt, EU; company based in the USA) → DPA + SCC.\n• Supabase — database & authentication, including encrypted PII and account data (EU region; company based in the USA) → DPA + SCC.\n• Resend — transactional email delivery (EU sending configured; provider based in the USA) → DPA + SCC.\n• Upstash — rate limiting (Redis); IP processed transiently and not stored (EU region) → DPA, SCC if applicable.\n• Sentry — error and performance monitoring (USA) → DPA + SCC.\n• LemonSqueezy — payment processing / Merchant of Record (USA); own controller for payment data → see section 8, SCC for any transfer.\n• DigiCert (Time-Stamping Authority, RFC 3161) — qualified timestamp of the daily Merkle root only; no personal data is transmitted, only a cryptographic hash (USA).",
+        },
+        {
+          heading: "10. Cookies and local storage",
+          body: "We do not use advertising or tracking cookies and we do not profile you. We only use:\n• a language cookie (\"lang\", valid ~1 year) that remembers your DE/EN choice, mirrored in your browser's localStorage;\n• essential authentication cookies set by Supabase when you log in to the dashboard, including a temporary PKCE login cookie.\nThese are technically necessary or based on the contract (Art. 6 (1)(f) and (b) GDPR), so no consent banner is required for them.",
+        },
+        {
+          heading: "11. Retention and deletion",
+          body: "Account and billing data are kept for the duration of the subscription and for as long as statutory retention periods require (e.g. tax law). Withdrawal records are anonymised automatically after the configured retention period (180 days by default); the cryptographic hash is retained so the proof remains verifiable without any personal data.",
+        },
+        {
+          heading: "12. Your rights",
+          body: "You have the right to access, rectification, erasure, restriction of processing, data portability and to object, as well as the right to withdraw any consent with effect for the future. You also have the right to lodge a complaint with a supervisory authority. To exercise your rights, contact: {email}.\n\nFor end-customer withdrawal data, please address the shop where you placed your order — that shop is the controller, and we will support it as its processor.",
+        },
+        {
+          heading: "13. Data security",
+          body: "All connections are encrypted via TLS. Personal data in the withdrawal log is additionally encrypted at the field level with AES-256-GCM, data is hosted in the EU, and access is restricted to what is technically necessary.",
+        },
+        {
+          heading: "14. Contact for data protection",
+          body: "For any questions about data protection or to exercise your rights, contact us at: {email}.\n[If you have appointed a data protection officer, name them and their contact details here.]",
         },
       ],
     },
