@@ -36,6 +36,26 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/*
+ * Scroll-reveal (see components/Reveal.tsx). The hidden/animated state only
+ * applies once JS adds `.reveal-ready` to <html>, and never for users who
+ * prefer reduced motion — so content is always accessible.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-ready .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal-ready .reveal.reveal-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 body {
   color: #0f172a;
   /* Layered brand mesh over a cool slate base so the page has depth instead
