@@ -20,8 +20,10 @@ import {
 import { useT } from "@/i18n/LanguageProvider";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import IntegrationGuide from "@/components/IntegrationGuide";
+import { env } from "@/lib/env";
 
-const APP_URL = (process.env.NEXT_PUBLIC_APP_URL || "https://app.example").replace(/\/$/, "");
+// Single source of truth: NEXT_PUBLIC_APP_URL (falls back to localhost for dev).
+const APP_URL = env.appUrl();
 
 const WHY_ICONS = [ShieldCheck, Scale, Lock, Zap, BadgeEuro, Globe];
 const HOW_ICONS = [FileSignature, Hash, Network, Stamp];

@@ -23,7 +23,7 @@ export default function IntegrationGuide({
   const [activeId, setActiveId] = useState(platforms[0]?.id ?? "");
   const [copied, setCopied] = useState(false);
 
-  const snippet = `<script src="${appUrl}/widget.min.js" data-api-key="${apiKey}" defer></script>`;
+  const snippet = `<script src="${appUrl}/widget.min.js" data-api-key="${apiKey}" data-api="${appUrl}" defer></script>`;
   const active = platforms.find((p) => p.id === activeId) ?? platforms[0];
 
   async function copy() {

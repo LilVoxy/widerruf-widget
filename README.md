@@ -57,10 +57,12 @@ npm run dev
 ## Embed snippet (shown in dashboard only when subscription is active)
 
 ```html
-<script src="https://YOUR-CDN/widget.min.js" data-api-key="wb_live_…" defer></script>
+<script src="https://YOUR-CDN/widget.min.js" data-api-key="wb_live_…" data-api="https://YOUR-CDN" defer></script>
 ```
 
-Optional attributes: `data-api` (API origin), `data-lang` (`de`/`en`).
+`data-api` must point at the API origin (it defaults to `https://app.example`, so
+omitting it makes the widget silently call the wrong host). Optional attribute:
+`data-lang` (`de`/`en`).
 
 ## Security & compliance notes
 
