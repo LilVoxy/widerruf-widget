@@ -385,26 +385,20 @@ export const de: Dict = {
     backHome: "← Zurück zur Startseite",
     contactCta: "Fragen oder Vorschläge?",
     contactEmailLabel: "Schreiben Sie uns:",
-    placeholderNote:
-      "Felder in eckigen Klammern [ ] sind Platzhalter — ersetzen Sie sie vor dem Livegang durch Ihre echten Angaben (Anbieter, Anschrift, USt-IdNr. usw.). Dieser Text dient der Vereinfachung und stellt keine Rechtsberatung dar; bitte lassen Sie ihn anwaltlich prüfen, insbesondere die Auftragsverarbeitungsverträge (AVV) und die EU-Standardvertragsklauseln (SCC).",
     impressum: {
       title: "Impressum",
       sections: [
         {
           heading: "Angaben gemäß § 5 DDG",
-          body: "[Rechtsform und Firmenname, z. B. Max Mustermann e.K. / Muster GmbH]\n[Straße und Hausnummer]\n[PLZ und Ort]\n[Land]\n\nVertreten durch: [Name des/der Vertretungsberechtigten / Geschäftsführers]",
+          body: "Vladislav Reshetnikov\nc/o Julia Andreyeva, Americanas 4, flat 404\n4048 Limassol\nZypern\n\nVertreten durch: Vladislav Reshetnikov",
         },
         {
           heading: "Kontakt",
-          body: "E-Mail: {email}\nTelefon: [optional — Ihre Telefonnummer]\n\nSchriftliche Anfragen beantworten wir in der Regel innerhalb weniger Werktage.",
+          body: "E-Mail: {email}\n\nSchriftliche Anfragen beantworten wir in der Regel innerhalb weniger Werktage.",
         },
         {
           heading: "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV",
-          body: "[Vor- und Nachname]\n[Anschrift wie oben]",
-        },
-        {
-          heading: "Register & Umsatzsteuer",
-          body: "Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:\n[USt-IdNr. — falls vorhanden]\n\n[Falls Sie in einem Register eingetragen sind, geben Sie hier zusätzlich Registergericht und -nummer an, z. B. Amtsgericht Musterstadt, HRB 12345.]",
+          body: "Vladislav Reshetnikov\nc/o Julia Andreyeva, Americanas 4, flat 404\n4048 Limassol\nZypern",
         },
         {
           heading: "Verbraucherstreitbeilegung",
@@ -429,7 +423,7 @@ export const de: Dict = {
       sections: [
         {
           heading: "1. Verantwortlicher und Rollen",
-          body: "Verantwortlicher im Sinne des Art. 4 Nr. 7 DSGVO für diese Website, das Dashboard und die Abrechnung ist:\n[Anbieter / Firmenname]\n[Anschrift]\nE-Mail: {email}\n\nWichtige Abgrenzung: Für die Widerrufsdaten Ihrer Endkunden sind Sie — der Shop-Betreiber — der Verantwortliche, und wir handeln ausschließlich als Ihr Auftragsverarbeiter auf Grundlage eines Auftragsverarbeitungsvertrags (AVV, Art. 28 DSGVO). Für Ihre eigenen Konto- und Abrechnungsdaten sind wir der Verantwortliche.",
+          body: "Verantwortlicher im Sinne des Art. 4 Nr. 7 DSGVO für diese Website, das Dashboard und die Abrechnung ist:\nVladislav Reshetnikov\nc/o Julia Andreyeva, Americanas 4, flat 404\n4048 Limassol\nZypern\nE-Mail: {email}\n\nWichtige Abgrenzung: Für die Widerrufsdaten Ihrer Endkunden sind Sie — der Shop-Betreiber — der Verantwortliche, und wir handeln ausschließlich als Ihr Auftragsverarbeiter auf Grundlage eines Auftragsverarbeitungsvertrags (AVV, Art. 28 DSGVO). Für Ihre eigenen Konto- und Abrechnungsdaten sind wir der Verantwortliche.",
         },
         {
           heading: "2. Was diese Erklärung abdeckt",
@@ -481,7 +475,7 @@ export const de: Dict = {
         },
         {
           heading: "14. Kontakt zum Datenschutz",
-          body: "Bei Fragen zum Datenschutz oder zur Ausübung Ihrer Rechte erreichen Sie uns unter: {email}.\n[Falls Sie einen Datenschutzbeauftragten benannt haben, geben Sie hier dessen Namen und Kontaktdaten an.]",
+          body: "Bei Fragen zum Datenschutz oder zur Ausübung Ihrer Rechte erreichen Sie uns unter: {email}.",
         },
       ],
     },

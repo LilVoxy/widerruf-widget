@@ -383,26 +383,20 @@ export const en = {
     backHome: "← Back to home",
     contactCta: "Questions or suggestions?",
     contactEmailLabel: "Write to us:",
-    placeholderNote:
-      "Fields in square brackets [ ] are placeholders — replace them with your real details (legal provider, address, VAT ID, etc.) before going live. This text is provided for convenience and is not legal advice; please have it reviewed by a lawyer, especially the data processing agreements (AVV) and the EU standard contractual clauses (SCC).",
     impressum: {
       title: "Imprint",
       sections: [
         {
           heading: "Information pursuant to § 5 DDG",
-          body: "[Legal form and company name, e.g. Max Mustermann e.K. / Muster GmbH]\n[Street and house number]\n[Postal code and city]\n[Country]\n\nRepresented by: [Name of the authorised representative / managing director]",
+          body: "Vladislav Reshetnikov\nc/o Julia Andreyeva, Americanas 4, flat 404\n4048 Limassol\nCyprus\n\nRepresented by: Vladislav Reshetnikov",
         },
         {
           heading: "Contact",
-          body: "Email: {email}\nPhone: [optional — your phone number]\n\nWritten enquiries are usually answered within a few business days.",
+          body: "Email: {email}\n\nWritten enquiries are usually answered within a few business days.",
         },
         {
           heading: "Responsible for content pursuant to § 18 (2) MStV",
-          body: "[First and last name]\n[Address as stated above]",
-        },
-        {
-          heading: "Register & VAT",
-          body: "VAT identification number pursuant to § 27a UStG:\n[VAT ID — if you have one]\n\n[If you are entered in a register, also state the register court and number here, e.g. Amtsgericht Musterstadt, HRB 12345.]",
+          body: "Vladislav Reshetnikov\nc/o Julia Andreyeva, Americanas 4, flat 404\n4048 Limassol\nCyprus",
         },
         {
           heading: "Consumer dispute resolution",
@@ -427,7 +421,7 @@ export const en = {
       sections: [
         {
           heading: "1. Controller and roles",
-          body: "Controller within the meaning of Art. 4 (7) GDPR for this website, the dashboard and billing is:\n[Legal provider / company name]\n[Address]\nEmail: {email}\n\nImportant distinction: for the withdrawal data of your end customers, you — the shop operator — are the controller, and we act solely as your processor (Auftragsverarbeiter) under a data processing agreement (AVV, Art. 28 GDPR). For your own account and billing data, we are the controller.",
+          body: "Controller within the meaning of Art. 4 (7) GDPR for this website, the dashboard and billing is:\nVladislav Reshetnikov\nc/o Julia Andreyeva, Americanas 4, flat 404\n4048 Limassol\nCyprus\nEmail: {email}\n\nImportant distinction: for the withdrawal data of your end customers, you — the shop operator — are the controller, and we act solely as your processor (Auftragsverarbeiter) under a data processing agreement (AVV, Art. 28 GDPR). For your own account and billing data, we are the controller.",
         },
         {
           heading: "2. What this policy covers",
@@ -479,7 +473,7 @@ export const en = {
         },
         {
           heading: "14. Contact for data protection",
-          body: "For any questions about data protection or to exercise your rights, contact us at: {email}.\n[If you have appointed a data protection officer, name them and their contact details here.]",
+          body: "For any questions about data protection or to exercise your rights, contact us at: {email}.",
         },
       ],
     },

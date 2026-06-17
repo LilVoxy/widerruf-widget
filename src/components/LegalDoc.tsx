@@ -42,10 +42,6 @@ export default function LegalDoc({ doc }: { doc: "impressum" | "datenschutz" }) 
 
         <h1 className="mt-4 text-balance text-3xl font-semibold tracking-tight text-slate-900">{page.title}</h1>
 
-        <p className="mt-4 rounded-xl bg-amber-50 p-3 text-sm text-amber-800 ring-1 ring-inset ring-amber-200">
-          {t.legal.placeholderNote}
-        </p>
-
         <div className="mt-8 space-y-8">
           {page.sections.map((s) => (
             <section key={s.heading}>
