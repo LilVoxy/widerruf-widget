@@ -65,7 +65,10 @@ export async function POST(req: Request): Promise<Response> {
     // 3) Resolve the organization from the API key (service-role RPC).
     const db = serviceClient();
     const { data: orgs, error: orgErr } = await db.rpc("org_for_api_key", { p_api_key: apiKey });
-    if (orgErr) return errorJson("internal_error", 500, "Org lookup failed", ch);
+    if (orgErr) {
+      console.error("[withdraw] org_lookup_failed", orgErr); // TEMP debug
+      return errorJson("internal_error", 500, "Org lookup failed", ch);
+    }
     const org = Array.isArray(orgs) ? orgs[0] : orgs;
     if (!org) return errorJson("invalid_api_key", 401, "Unknown API key", ch);
 
@@ -101,7 +104,10 @@ export async function POST(req: Request): Promise<Response> {
       sha256_hash: hash,
       tsa_pending: true,
     });
-    if (insErr) return errorJson("internal_error", 500, "Persist failed", ch);
+    if (insErr) {
+      console.error("[withdraw] persist_failed", insErr); // TEMP debug
+      return errorJson("internal_error", 500, "Persist failed", ch);
+    }
 
     // 8) Instant receipt (durable medium). The record is already safe; if email
     //    delivery fails we still return the proof so the consumer can verify.
@@ -129,7 +135,8 @@ export async function POST(req: Request): Promise<Response> {
     }
 
     return json({ ok: true, received_at: receivedAtIso, hash, proof_url: proofUrl }, 200, ch);
-  } catch {
+  } catch (e) {
+    console.error("[withdraw] unexpected_error", e); // TEMP debug
     return errorJson("internal_error", 500, "Unexpected error", ch);
   }
 }
