@@ -65,7 +65,11 @@ export default function DashboardShell({
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="flex items-center gap-2 border-b border-slate-200 px-5 py-4">
+        <Link
+          href="/"
+          onClick={() => setOpen(false)}
+          className="flex items-center gap-2 border-b border-slate-200 px-5 py-4 transition-colors hover:bg-slate-50"
+        >
           <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-600 text-white">
             <ShieldCheck className="h-5 w-5" />
           </span>
@@ -73,7 +77,7 @@ export default function DashboardShell({
             <div className="text-sm font-semibold text-slate-900">Widerrufsbutton</div>
             <div className="text-xs text-slate-500">{t.nav.brandSub}</div>
           </div>
-        </div>
+        </Link>
 
         <nav className="flex-1 space-y-1 p-3">
           {NAV.map(({ href, key, icon: Icon }) => {

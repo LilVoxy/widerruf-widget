@@ -309,7 +309,7 @@ export default function Home() {
             <Link href="/impressum" className="hover:text-slate-900">{t.landing.footer.impressum}</Link>
             <Link href="/datenschutz" className="hover:text-slate-900">{t.landing.footer.datenschutz}</Link>
             <a href={`mailto:${t.contact.email}`} className="hover:text-slate-900">
-              {t.landing.footer.kontakt}
+              {t.contact.email}
             </a>
             <span>{t.landing.footer.hosting}</span>
           </div>
