@@ -19,51 +19,51 @@ export default function LegalDoc({ doc }: { doc: "impressum" | "datenschutz" }) 
   const render = (text: string) => text.replace(/\{email\}/g, t.contact.email);
 
   return (
-    <div className="min-h-screen bg-white">
-      <header className="sticky top-0 z-30 border-b border-white/10 bg-slate-950/90 backdrop-blur">
-        <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-4 py-3">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600 text-white">
+    <div className="min-h-screen bg-transparent">
+      <header className="sticky top-0 z-30 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+          <Link href="/" className="flex items-center gap-2.5">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 text-white shadow-[var(--shadow-brand)] ring-1 ring-inset ring-white/20">
               <ShieldCheck className="h-5 w-5" />
             </span>
-            <span className="font-semibold text-white">{t.common.appName}</span>
+            <span className="font-semibold tracking-tight text-white">{t.common.appName}</span>
           </Link>
           <LanguageSwitcher variant="dark" />
         </div>
       </header>
 
-      <main className="mx-auto max-w-3xl px-4 py-12">
+      <main className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
         <Link
           href="/"
-          className="text-sm font-medium text-brand-600 transition-colors hover:text-brand-700"
+          className="text-sm font-medium text-brand-600 underline-offset-4 transition-colors hover:text-brand-700 hover:underline hover:decoration-brand-400"
         >
           {t.legal.backHome}
         </Link>
 
-        <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-900">{page.title}</h1>
+        <h1 className="mt-4 text-balance text-3xl font-semibold tracking-tight text-slate-900">{page.title}</h1>
 
-        <p className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
+        <p className="mt-4 rounded-xl bg-amber-50 p-3 text-sm text-amber-800 ring-1 ring-inset ring-amber-200">
           {t.legal.placeholderNote}
         </p>
 
         <div className="mt-8 space-y-8">
           {page.sections.map((s) => (
             <section key={s.heading}>
-              <h2 className="text-lg font-semibold text-slate-900">{s.heading}</h2>
-              <p className="mt-2 whitespace-pre-line text-sm leading-relaxed text-slate-600">
+              <h2 className="text-lg font-semibold tracking-tight text-slate-900">{s.heading}</h2>
+              <p className="mt-2 whitespace-pre-line text-pretty text-sm leading-relaxed text-slate-600">
                 {render(s.body)}
               </p>
             </section>
           ))}
         </div>
 
-        <div className="mt-12 rounded-2xl border border-slate-200 bg-slate-50 p-6">
+        <div className="mt-12 rounded-2xl bg-white p-6 shadow-[var(--shadow-card)] ring-1 ring-slate-200/70">
           <p className="font-semibold text-slate-900">{t.legal.contactCta}</p>
           <p className="mt-1 text-sm text-slate-600">
             {t.legal.contactEmailLabel}{" "}
             <a
               href={`mailto:${t.contact.email}`}
-              className="font-medium text-brand-600 transition-colors hover:text-brand-700"
+              className="font-medium text-brand-600 underline-offset-4 transition-colors hover:text-brand-700 hover:underline hover:decoration-brand-400"
             >
               {t.contact.email}
             </a>

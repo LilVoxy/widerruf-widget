@@ -8,12 +8,27 @@
 @theme {
   --color-brand-50: #eff6ff;
   --color-brand-100: #dbeafe;
+  --color-brand-200: #bfdbfe;
+  --color-brand-300: #93c5fd;
+  --color-brand-400: #60a5fa;
   --color-brand-500: #2563eb;
-  --color-brand-600: #1d4ed8;
-  --color-brand-700: #1e40af;
+  --color-brand-600: #1d4ed8; /* primary — do not change */
+  --color-brand-700: #1e40af; /* hover primary — do not change */
+  --color-brand-800: #1e3a8a;
+  --color-brand-900: #172554;
 
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
     sans-serif;
+
+  /* Soft, multi-layer shadows — the core of the "expensive" UI feel. */
+  --shadow-xs: 0 1px 2px 0 rgb(15 23 42 / 0.04);
+  --shadow-card: 0 1px 2px 0 rgb(15 23 42 / 0.04),
+    0 1px 3px 0 rgb(15 23 42 / 0.06);
+  --shadow-elevated: 0 4px 6px -1px rgb(15 23 42 / 0.06),
+    0 12px 24px -8px rgb(15 23 42 / 0.12);
+  --shadow-popover: 0 12px 32px -8px rgb(15 23 42 / 0.18),
+    0 2px 6px -2px rgb(15 23 42 / 0.1);
+  --shadow-brand: 0 4px 12px -2px rgb(29 78 216 / 0.4);
 }
 
 html {
@@ -21,6 +36,13 @@ html {
 }
 
 body {
-  background: #f1f5f9;
   color: #0f172a;
+  /* Soft brand mesh breathing from the top over a cool slate-50 base. */
+  background-color: #f8fafc;
+  background-image: radial-gradient(
+    60% 50% at 50% -10%,
+    rgb(219 234 254 / 0.7) 0%,
+    transparent 70%
+  );
+  background-attachment: fixed;
 }

@@ -39,8 +39,8 @@ export default function LanguageSwitcher({
       {OPTIONS.map(({ code, label }) => {
         const active = lang === code;
         const activeCls = dark
-          ? "bg-white text-slate-900"
-          : "bg-white text-brand-700 shadow-sm";
+          ? "bg-white text-slate-900 shadow-[var(--shadow-xs)] ring-1 ring-inset ring-white/60"
+          : "bg-white text-brand-700 shadow-[var(--shadow-xs)] ring-1 ring-inset ring-white/70";
         const idleCls = dark
           ? "text-white/70 hover:text-white"
           : "text-slate-500 hover:text-slate-900";
@@ -50,7 +50,7 @@ export default function LanguageSwitcher({
             type="button"
             onClick={() => setLang(code)}
             aria-pressed={active}
-            className={`rounded-md px-2 py-1 text-xs font-semibold transition-colors ${
+            className={`rounded-md px-2 py-1 text-xs font-semibold transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-1 ${
               active ? activeCls : idleCls
             }`}
           >

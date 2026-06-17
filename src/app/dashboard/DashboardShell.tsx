@@ -61,20 +61,20 @@ export default function DashboardShell({
 
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-40 flex w-[260px] flex-col border-r border-slate-200 bg-white transition-transform duration-200 lg:static lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-40 flex w-[260px] flex-col border-r border-slate-200/80 bg-white/95 backdrop-blur transition-transform duration-200 lg:static lg:translate-x-0 ${
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <Link
           href="/"
           onClick={() => setOpen(false)}
-          className="flex items-center gap-2 border-b border-slate-200 px-5 py-4 transition-colors hover:bg-slate-50"
+          className="flex items-center gap-2.5 border-b border-slate-200/80 px-5 py-4 transition-colors hover:bg-slate-50"
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-600 text-white">
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 text-white shadow-[var(--shadow-brand)] ring-1 ring-inset ring-white/20">
             <ShieldCheck className="h-5 w-5" />
           </span>
           <div className="leading-tight">
-            <div className="text-sm font-semibold text-slate-900">Widerrufsbutton</div>
+            <div className="text-sm font-semibold tracking-tight text-slate-900">Widerrufsbutton</div>
             <div className="text-xs text-slate-500">{t.nav.brandSub}</div>
           </div>
         </Link>
@@ -88,30 +88,41 @@ export default function DashboardShell({
                 href={href}
                 onClick={() => setOpen(false)}
                 aria-current={active ? "page" : undefined}
-                className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                className={`group relative flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium transition-all duration-200 ease-out ${
                   active
-                    ? "bg-brand-50 text-brand-700"
+                    ? "bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-100"
                     : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
                 }`}
               >
-                <Icon className="h-[18px] w-[18px]" strokeWidth={2} />
+                {active && (
+                  <span
+                    aria-hidden
+                    className="absolute inset-y-1.5 left-0 w-1 rounded-r-full bg-brand-600"
+                  />
+                )}
+                <Icon
+                  className={`h-[18px] w-[18px] transition-colors ${
+                    active ? "text-brand-600" : "text-slate-400 group-hover:text-slate-600"
+                  }`}
+                  strokeWidth={2}
+                />
                 {t.nav[key]}
               </Link>
             );
           })}
         </nav>
 
-        <div className="border-t border-slate-200 p-4 text-xs text-slate-400">
+        <div className="border-t border-slate-200/80 p-4 text-xs text-slate-400">
           {t.nav.hosting}
         </div>
       </aside>
 
       {/* Main column */}
       <div className="flex min-h-screen flex-col">
-        <header className="sticky top-0 z-20 flex items-center justify-between gap-4 border-b border-slate-200 bg-white/80 px-4 py-3 backdrop-blur lg:px-8">
+        <header className="sticky top-0 z-20 flex items-center justify-between gap-4 border-b border-slate-200/80 bg-white/80 px-4 py-3 backdrop-blur-xl lg:px-8">
           <button
             onClick={() => setOpen((v) => !v)}
-            className="rounded-md p-2 text-slate-600 hover:bg-slate-100 lg:hidden"
+            className="rounded-lg p-2 text-slate-600 transition-colors hover:bg-slate-100 lg:hidden"
             aria-label={t.nav.openMenu}
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -123,7 +134,7 @@ export default function DashboardShell({
             <button
               onClick={signOut}
               disabled={signingOut}
-              className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100 disabled:opacity-60"
+              className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-all duration-200 ease-out hover:border-slate-300 hover:bg-slate-50 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 disabled:opacity-60 motion-reduce:transform-none motion-reduce:transition-none"
             >
               <LogOut className="h-4 w-4" />
               {signingOut ? t.nav.signingOut : t.nav.signOut}
