@@ -13,11 +13,13 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase-browser";
+import { useT } from "@/i18n/LanguageProvider";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const NAV = [
-  { href: "/dashboard", label: "Übersicht", icon: LayoutDashboard },
-  { href: "/dashboard/logs", label: "Widerrufs-Log", icon: ScrollText },
-  { href: "/dashboard/settings", label: "Einstellungen", icon: SettingsIcon },
+  { href: "/dashboard", key: "overview", icon: LayoutDashboard },
+  { href: "/dashboard/logs", key: "logs", icon: ScrollText },
+  { href: "/dashboard/settings", key: "settings", icon: SettingsIcon },
 ] as const;
 
 function isActive(pathname: string, href: string): boolean {
@@ -32,6 +34,7 @@ export default function DashboardShell({
   email: string;
   children: ReactNode;
 }) {
+  const t = useT();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [signingOut, setSigningOut] = useState(false);
@@ -50,7 +53,7 @@ export default function DashboardShell({
       {/* Mobile backdrop */}
       {open && (
         <button
-          aria-label="Menü schließen"
+          aria-label={t.nav.closeMenu}
           onClick={() => setOpen(false)}
           className="fixed inset-0 z-30 bg-slate-900/40 lg:hidden"
         />
@@ -68,12 +71,12 @@ export default function DashboardShell({
           </span>
           <div className="leading-tight">
             <div className="text-sm font-semibold text-slate-900">Widerrufsbutton</div>
-            <div className="text-xs text-slate-500">DACH · § 356a BGB</div>
+            <div className="text-xs text-slate-500">{t.nav.brandSub}</div>
           </div>
         </div>
 
         <nav className="flex-1 space-y-1 p-3">
-          {NAV.map(({ href, label, icon: Icon }) => {
+          {NAV.map(({ href, key, icon: Icon }) => {
             const active = isActive(pathname, href);
             return (
               <Link
@@ -88,14 +91,14 @@ export default function DashboardShell({
                 }`}
               >
                 <Icon className="h-[18px] w-[18px]" strokeWidth={2} />
-                {label}
+                {t.nav[key]}
               </Link>
             );
           })}
         </nav>
 
         <div className="border-t border-slate-200 p-4 text-xs text-slate-400">
-          EU-Hosting · Frankfurt
+          {t.nav.hosting}
         </div>
       </aside>
 
@@ -105,12 +108,13 @@ export default function DashboardShell({
           <button
             onClick={() => setOpen((v) => !v)}
             className="rounded-md p-2 text-slate-600 hover:bg-slate-100 lg:hidden"
-            aria-label="Menü öffnen"
+            aria-label={t.nav.openMenu}
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
 
           <div className="ml-auto flex items-center gap-3">
+            <LanguageSwitcher variant="light" />
             <span className="hidden text-sm text-slate-500 sm:inline">{email}</span>
             <button
               onClick={signOut}
@@ -118,7 +122,7 @@ export default function DashboardShell({
               className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100 disabled:opacity-60"
             >
               <LogOut className="h-4 w-4" />
-              {signingOut ? "Abmelden…" : "Abmelden"}
+              {signingOut ? t.nav.signingOut : t.nav.signOut}
             </button>
           </div>
         </header>

@@ -15,15 +15,5 @@ export default async function SettingsPage() {
     )
     .maybeSingle();
 
-  return (
-    <div className="space-y-6">
-      <header>
-        <h1 className="text-2xl font-semibold text-slate-900">Einstellungen</h1>
-        <p className="mt-1 text-sm text-slate-500">
-          Stammdaten, Auftragsverarbeitung und Abonnement verwalten.
-        </p>
-      </header>
-      <Settings org={(org as OrgRow) || null} />
-    </div>
-  );
+  return <Settings org={(org as OrgRow) || null} />;
 }
