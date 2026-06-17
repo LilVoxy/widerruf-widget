@@ -9,13 +9,13 @@ const CHECKOUT_BASE =
   "https://widerruf-widget.lemonsqueezy.com/checkout/buy/2f827963-4be2-42ea-9f5b-cfad3b504958";
 
 const cardClass =
-  "rounded-2xl bg-white p-6 shadow-[var(--shadow-card)] ring-1 ring-slate-200/70";
+  "rounded-2xl border border-white/10 bg-white/[0.04] p-6 shadow-[0_8px_32px_-12px_rgb(29_78_216/0.12)] ring-1 ring-inset ring-white/5 backdrop-blur-sm";
 const labelClass =
   "mt-4 block text-xs font-medium uppercase tracking-wide text-slate-500";
 const inputClass =
-  "mt-1.5 w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition-shadow duration-200 focus:border-brand-500 focus:ring-4 focus:ring-brand-100/60";
+  "mt-1.5 w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-slate-500 outline-none transition-shadow duration-200 focus:border-brand-500/50 focus:ring-4 focus:ring-brand-500/15";
 const primaryBtn =
-  "inline-flex items-center justify-center gap-2 rounded-xl bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-[var(--shadow-brand)] ring-1 ring-inset ring-white/15 transition-all duration-200 ease-out hover:bg-brand-700 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 disabled:opacity-60 disabled:active:scale-100 motion-reduce:transform-none motion-reduce:transition-none";
+  "inline-flex items-center justify-center gap-2 rounded-xl bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-[var(--shadow-brand)] ring-1 ring-inset ring-white/15 transition-all duration-200 ease-out hover:bg-brand-700 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 disabled:opacity-60 disabled:active:scale-100 motion-reduce:transform-none motion-reduce:transition-none";
 
 export default function Settings({ org }: { org: OrgRow | null }) {
   const t = useT();
@@ -71,12 +71,12 @@ export default function Settings({ org }: { org: OrgRow | null }) {
   return (
     <div className="space-y-6">
       <header>
-        <h1 className="text-2xl font-semibold tracking-tight text-slate-900">{t.settings.title}</h1>
-        <p className="mt-1 text-sm text-slate-500">{t.settings.subtitle}</p>
+        <h1 className="text-2xl font-semibold tracking-tight text-white">{t.settings.title}</h1>
+        <p className="mt-1 text-sm text-slate-400">{t.settings.subtitle}</p>
       </header>
 
       <form className={cardClass} onSubmit={save}>
-        <h2 className="text-base font-semibold text-slate-900">{t.settings.masterData.title}</h2>
+        <h2 className="text-base font-semibold text-white">{t.settings.masterData.title}</h2>
 
         <label className={labelClass} htmlFor="nm">
           {t.settings.masterData.name}
@@ -119,18 +119,18 @@ export default function Settings({ org }: { org: OrgRow | null }) {
       </form>
 
       <section className={cardClass}>
-        <h2 className="text-base font-semibold text-slate-900">{t.settings.avv.title}</h2>
+        <h2 className="text-base font-semibold text-white">{t.settings.avv.title}</h2>
         {current?.avv_accepted_at ? (
-          <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-700 ring-1 ring-inset ring-emerald-100">
+          <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1 text-sm font-medium text-emerald-300 ring-1 ring-inset ring-emerald-500/20">
             <CheckCircle2 className="h-4 w-4" />
             {fmt(t.settings.avv.acceptedAt, { date: fmtDate(current.avv_accepted_at) })}
           </p>
         ) : (
           <>
-            <label className="mt-3 flex items-start gap-2.5 text-sm text-slate-700">
+            <label className="mt-3 flex items-start gap-2.5 text-sm text-slate-300">
               <input
                 type="checkbox"
-                className="mt-0.5 h-4 w-4 rounded border-slate-300 accent-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+                className="mt-0.5 h-4 w-4 rounded border-white/20 bg-white/5 accent-brand-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
                 checked={avv}
                 onChange={(e) => setAvv(e.target.checked)}
               />
@@ -154,10 +154,10 @@ export default function Settings({ org }: { org: OrgRow | null }) {
       </section>
 
       <section className={cardClass}>
-        <h2 className="text-base font-semibold text-slate-900">{t.settings.subscription.title}</h2>
-        <p className="mt-2 text-sm text-slate-600">
+        <h2 className="text-base font-semibold text-white">{t.settings.subscription.title}</h2>
+        <p className="mt-2 text-sm text-slate-400">
           {t.settings.subscription.status}{" "}
-          <strong className={isActive ? "text-emerald-700" : "text-amber-700"}>
+          <strong className={isActive ? "text-emerald-300" : "text-amber-300"}>
             {current?.subscription_status || "—"}
           </strong>
           {current?.subscription_plan ? ` · ${current.subscription_plan}` : ""}
@@ -177,7 +177,7 @@ export default function Settings({ org }: { org: OrgRow | null }) {
       </section>
 
       {msg && (
-        <p className="rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-600 ring-1 ring-inset ring-slate-200/70">
+        <p className="rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-slate-300 ring-1 ring-inset ring-white/5">
           {msg}
         </p>
       )}

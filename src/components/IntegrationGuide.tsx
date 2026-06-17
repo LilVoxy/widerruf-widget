@@ -13,15 +13,19 @@ export default function IntegrationGuide({
   appUrl,
   apiKey,
   isPlaceholder = false,
+  variant = "light",
 }: {
   appUrl: string;
   apiKey: string;
   isPlaceholder?: boolean;
+  variant?: "light" | "dark";
 }) {
   const t = useT();
   const platforms = t.integration.platforms;
   const [activeId, setActiveId] = useState(platforms[0]?.id ?? "");
   const [copied, setCopied] = useState(false);
+
+  const dark = variant === "dark";
 
   const snippet = `<script src="${appUrl}/widget.min.js" data-api-key="${apiKey}" data-api="${appUrl}" defer></script>`;
   const active = platforms.find((p) => p.id === activeId) ?? platforms[0];
@@ -38,7 +42,7 @@ export default function IntegrationGuide({
 
   return (
     <div>
-      <p className="text-sm text-slate-600">{t.integration.beforeBody}</p>
+      <p className={`text-sm ${dark ? "text-slate-400" : "text-slate-600"}`}>{t.integration.beforeBody}</p>
 
       <div className="mt-3 overflow-hidden rounded-xl bg-slate-950 shadow-[var(--shadow-elevated)] ring-1 ring-inset ring-white/10">
         <div className="flex items-center justify-between gap-3 border-b border-white/10 px-4 py-2.5">
@@ -62,7 +66,7 @@ export default function IntegrationGuide({
       </div>
 
       {isPlaceholder && (
-        <p className="mt-2 text-xs text-slate-500">{t.integration.placeholderNote}</p>
+        <p className={`mt-2 text-xs ${dark ? "text-slate-500" : "text-slate-500"}`}>{t.integration.placeholderNote}</p>
       )}
 
       <div className="mt-5 flex flex-wrap gap-2">
@@ -77,7 +81,9 @@ export default function IntegrationGuide({
               className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 ${
                 isActive
                   ? "bg-brand-600 text-white shadow-[var(--shadow-brand)] ring-1 ring-inset ring-white/15"
-                  : "bg-slate-100 text-slate-600 ring-1 ring-inset ring-slate-200/60 hover:bg-slate-200 hover:text-slate-900"
+                  : dark
+                    ? "bg-white/5 text-slate-400 ring-1 ring-inset ring-white/10 hover:bg-white/10 hover:text-slate-200 focus-visible:ring-offset-slate-950"
+                    : "bg-slate-100 text-slate-600 ring-1 ring-inset ring-slate-200/60 hover:bg-slate-200 hover:text-slate-900"
               }`}
             >
               {p.name}
@@ -89,8 +95,14 @@ export default function IntegrationGuide({
       {active && (
         <ol className="mt-5 space-y-3">
           {active.steps.map((step, i) => (
-            <li key={i} className="flex gap-3 text-sm text-slate-700">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-50 text-xs font-semibold text-brand-700 tabular-nums ring-1 ring-inset ring-brand-100">
+            <li key={i} className={`flex gap-3 text-sm ${dark ? "text-slate-300" : "text-slate-700"}`}>
+              <span
+                className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-semibold tabular-nums ring-1 ring-inset ${
+                  dark
+                    ? "bg-brand-600/15 text-brand-300 ring-brand-500/25"
+                    : "bg-brand-50 text-brand-700 ring-brand-100"
+                }`}
+              >
                 {i + 1}
               </span>
               <span className="pt-0.5">{step}</span>
