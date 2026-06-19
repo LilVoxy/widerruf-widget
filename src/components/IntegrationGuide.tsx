@@ -61,7 +61,7 @@ export default function IntegrationGuide({
           </button>
         </div>
         <pre className="overflow-x-auto p-4 text-xs leading-relaxed text-slate-100">
-          <code className="font-mono tracking-tight">{snippet}</code>
+          <code className="font-mono tracking-tight" suppressHydrationWarning>{snippet}</code>
         </pre>
       </div>
 
