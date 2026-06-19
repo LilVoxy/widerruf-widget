@@ -368,6 +368,12 @@ export const en = {
       status: "Status:",
       subscribe: "Subscribe — €9/month",
       snippetHint: "You can find the integration snippet under “Overview”.",
+      cancel: "Cancel subscription",
+      cancelConfirm: "Cancel at the end of the current billing period?",
+      cancelYes: "Yes, cancel",
+      cancelNo: "Keep subscription",
+      cancelSuccess:
+        "Cancellation confirmed. Access remains active until the end of the current billing period.",
     },
     saved: "Saved.",
     error: "Error: ",

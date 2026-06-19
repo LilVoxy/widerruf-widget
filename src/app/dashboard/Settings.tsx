@@ -27,6 +27,7 @@ export default function Settings({ org }: { org: OrgRow | null }) {
   const [msg, setMsg] = useState("");
   const [busy, setBusy] = useState(false);
   const [current, setCurrent] = useState<OrgRow | null>(org);
+  const [confirmCancel, setConfirmCancel] = useState(false);
 
   async function save(e: React.FormEvent) {
     e.preventDefault();
@@ -59,6 +60,20 @@ export default function Settings({ org }: { org: OrgRow | null }) {
       setCurrent((c) => (c ? { ...c, avv_accepted_at: d.avv_accepted_at } : c));
       setMsg(t.settings.avvAcceptedAt + d.avv_accepted_at);
     } else setMsg(t.settings.error + (d.error || t.settings.unknown));
+  }
+
+  async function cancelSubscription() {
+    setBusy(true);
+    setMsg("");
+    const res = await fetch("/api/org/cancel-subscription", { method: "POST" });
+    const d = await res.json();
+    setBusy(false);
+    setConfirmCancel(false);
+    if (d.ok) {
+      setMsg(t.settings.subscription.cancelSuccess);
+    } else {
+      setMsg(t.settings.error + (d.error || t.settings.unknown));
+    }
   }
 
   const isActive = current?.subscription_status === "active";
@@ -172,7 +187,42 @@ export default function Settings({ org }: { org: OrgRow | null }) {
           </a>
         )}
         {isActive && (
-          <p className="mt-2 text-sm text-slate-500">{t.settings.subscription.snippetHint}</p>
+          <>
+            <p className="mt-2 text-sm text-slate-500">{t.settings.subscription.snippetHint}</p>
+            <div className="mt-5 border-t border-white/5 pt-5">
+              {confirmCancel ? (
+                <div className="rounded-xl border border-red-500/20 bg-red-500/5 p-4 ring-1 ring-inset ring-red-500/10">
+                  <p className="mb-3 text-sm text-slate-300">{t.settings.subscription.cancelConfirm}</p>
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      disabled={busy}
+                      onClick={cancelSubscription}
+                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow ring-1 ring-inset ring-white/10 transition-all duration-200 ease-out hover:bg-red-700 active:scale-[0.98] disabled:opacity-60 disabled:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 motion-reduce:transform-none motion-reduce:transition-none"
+                    >
+                      {t.settings.subscription.cancelYes}
+                    </button>
+                    <button
+                      type="button"
+                      disabled={busy}
+                      onClick={() => setConfirmCancel(false)}
+                      className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-300 transition-all duration-200 ease-out hover:bg-white/10 active:scale-[0.98] disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 motion-reduce:transform-none motion-reduce:transition-none"
+                    >
+                      {t.settings.subscription.cancelNo}
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setConfirmCancel(true)}
+                  className="text-sm font-medium text-slate-400 underline-offset-4 hover:text-red-400 hover:underline transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                >
+                  {t.settings.subscription.cancel}
+                </button>
+              )}
+            </div>
+          </>
         )}
       </section>
 

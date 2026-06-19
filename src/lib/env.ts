@@ -33,4 +33,6 @@ export const env = {
   paymentsWebhookSecret: () => req("PAYMENTS_WEBHOOK_SECRET"),
 
   retentionDays: () => parseInt(opt("DATA_RETENTION_DAYS", "180"), 10),
+
+  lsApiKey: () => opt("LS_API_KEY"),
 };

@@ -370,6 +370,12 @@ export const de: Dict = {
       status: "Status:",
       subscribe: "Subscribe — 9 €/Monat",
       snippetHint: "Das Integrations-Snippet finden Sie unter „Übersicht“.",
+      cancel: "Abonnement kündigen",
+      cancelConfirm: "Zum Ende der aktuellen Abrechnungsperiode kündigen?",
+      cancelYes: "Ja, kündigen",
+      cancelNo: "Abonnement behalten",
+      cancelSuccess:
+        "Kündigung bestätigt. Der Zugang bleibt bis zum Ende der aktuellen Abrechnungsperiode aktiv.",
     },
     saved: "Gespeichert.",
     error: "Fehler: ",
