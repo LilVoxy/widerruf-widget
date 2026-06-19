@@ -136,7 +136,7 @@ export default function Settings({ org }: { org: OrgRow | null }) {
       <section className={cardClass}>
         <h2 className="text-base font-semibold text-white">{t.settings.avv.title}</h2>
         {current?.avv_accepted_at ? (
-          <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1 text-sm font-medium text-emerald-300 ring-1 ring-inset ring-emerald-500/20">
+          <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1 text-sm font-medium text-emerald-300 ring-1 ring-inset ring-emerald-500/20" suppressHydrationWarning>
             <CheckCircle2 className="h-4 w-4" />
             {fmt(t.settings.avv.acceptedAt, { date: fmtDate(current.avv_accepted_at) })}
           </p>

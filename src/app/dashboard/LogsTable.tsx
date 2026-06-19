@@ -78,7 +78,7 @@ export default function LogsTable({
               <tbody className="divide-y divide-white/5">
                 {rows.map((r) => (
                   <tr key={r.id} className="transition-colors hover:bg-white/[0.03]">
-                    <td className="whitespace-nowrap px-4 py-3 text-slate-300 tabular-nums">
+                    <td className="whitespace-nowrap px-4 py-3 text-slate-300 tabular-nums" suppressHydrationWarning>
                       {new Date(r.dateIso).toLocaleString(lang)}
                     </td>
                     <td className="px-4 py-3 font-mono text-xs tracking-tight text-slate-300">{r.orderId}</td>
