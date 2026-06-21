@@ -1,6 +1,6 @@
 /**
  * Widerrufsbutton DACH — embeddable widget (§ 356a BGB).
- * Vanilla JS, no dependencies, closed Shadow DOM, ≤ 5 KB raw minified.
+ * Vanilla JS, no dependencies, closed Shadow DOM, ≤ 6 KB raw minified.
  *
  * Embed:
  *   <script src="https://cdn.example/widget.min.js" data-api-key="ORG_KEY" defer></script>
