@@ -35,3 +35,7 @@ yarn-debug.log*
 yarn-error.log*
 
 /test-shop
+
+/AUDIT_CHECKLIST.md
+/CLAUDE.md
+/PROJECT_DESCRIPTION.md

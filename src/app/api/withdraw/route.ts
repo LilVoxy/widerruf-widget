@@ -2,8 +2,8 @@
  * POST /api/withdraw — withdrawal intake (UI step 3 → 4).
  * Runs on the Vercel Edge runtime, region fra1 (see vercel.json).
  *
- * Pipeline: rate-limit → validate (Zod, strict) → resolve org by API key →
- * CORS/whitelist → subscription gate → sanitize → canonical SHA-256 (pre-DB) →
+ * Pipeline: rate-limit → validate (Zod, strict) → sanitize → resolve org by API key →
+ * CORS/whitelist → subscription gate → canonical SHA-256 (pre-DB) →
  * encrypt PII → append-only INSERT → instant email receipt.
  */
 import { WithdrawSchema } from "@/lib/schema";

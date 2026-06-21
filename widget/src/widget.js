@@ -41,7 +41,8 @@ import { I18N } from "./i18n.js";
     ".x{color:#b91c1c;font-size:13px;margin-top:12px}" +
     ".r{display:flex;gap:8px;margin-top:20px}.a{flex:1;padding:12px}" +
     ".k{background:#b91c1c;color:#fff}.k:disabled{opacity:.6}" +
-    ".c{background:#e2e8f0;color:#111}.t{text-align:center}";
+    ".c{background:#e2e8f0;color:#111}.t{text-align:center}" +
+    ".p{font-size:11px;color:#94a3b8;margin:14px 0 0;line-height:1.4}";
 
   class WB extends HTMLElement {
     constructor() {
@@ -94,6 +95,7 @@ import { I18N } from "./i18n.js";
         field("wb-n", t.name, "text", "name") +
         field("wb-o", t.order, "text", "off") +
         field("wb-e", t.email, "email", "email") +
+        '<p class="p">' + esc(t.privacy) + "</p>" +
         '<p class="x" id="wb-x" role="alert"></p>' +
         '<div class="r">' +
           '<button type="button" class="a c" id="wb-c">' + esc(t.close) + "</button>" +

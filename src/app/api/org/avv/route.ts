@@ -3,6 +3,7 @@
  * Stores the exact ISO 8601 timestamp AND the anonymized IP of the shop for the
  * legal audit trail (not a mere boolean).
  */
+import { serviceClient } from "@/lib/supabase";
 import { supabaseServer } from "@/lib/supabase-server";
 import { clientIp, anonymizeIp } from "@/lib/ip";
 import { json } from "@/lib/http";
@@ -19,7 +20,9 @@ export async function POST(req: Request): Promise<Response> {
   const avv_accepted_at = new Date().toISOString();
   const avv_accepted_ip_anonymized = anonymizeIp(clientIp(req));
 
-  const { error } = await supabase
+  // service_role bypasses the trigger guard in 0005 that blocks authenticated role
+  // from writing AVV columns. Authentication is already verified above via supabaseServer.
+  const { error } = await serviceClient()
     .from("organizations")
     .update({ avv_accepted_at, avv_accepted_ip_anonymized })
     .eq("owner_user_id", user.id);

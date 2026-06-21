@@ -10,6 +10,7 @@ export const I18N = {
     order: "Bestell-/Vertragsnummer",
     email: "E-Mail-Adresse",
     hint: "Sie erhalten sofort eine Bestätigung per E-Mail.",
+    privacy: "Bestätigung per E-Mail. Verarbeitung gem. Art. 6 Abs. 1 lit. b DSGVO; Anonymisierung nach 180 Tagen.",
     okTitle: "Widerruf eingegangen",
     okBody: "Ihr Widerruf wurde am {time} empfangen. Bestätigung an {email} gesendet.",
     eNet: "Verbindung fehlgeschlagen. Bitte erneut versuchen.",
